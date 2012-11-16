@@ -1,7 +1,13 @@
 package com.manning.nettyinaction.chapter1;
 
 import java.io.IOException;
-import java.lang.Integer;import java.lang.InterruptedException;import java.lang.Object;import java.lang.Override;import java.lang.String;import java.lang.System;import java.lang.Thread;import java.lang.Throwable;import java.net.InetSocketAddress;
+import java.lang.Integer;
+import java.lang.InterruptedException;
+import java.lang.Object;
+import java.lang.System;
+import java.lang.Thread;
+import java.lang.Throwable;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
@@ -84,10 +90,5 @@ public class PlainNio2EchoServer {
                 // ingnore on close
             }
         }
-    }
-
-    public static void main(String[] args) throws IOException{
-        PlainNio2EchoServer server = new PlainNio2EchoServer();
-        server.serve(8888);
     }
 }
