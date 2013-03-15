@@ -15,6 +15,8 @@ import java.nio.channels.CompletionHandler;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * Listing 1.6 of <i>Netty in Action</i>
+ *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
 public class PlainNio2EchoServer {

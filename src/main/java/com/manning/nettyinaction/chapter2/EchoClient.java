@@ -5,10 +5,15 @@ import java.net.InetSocketAddress;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+/**
+ * Listing 2.5  of <i>Netty in Action</i>
+ *
+ * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ */
 public class EchoClient {
 
     private final String host;
@@ -22,7 +27,7 @@ public class EchoClient {
     public void start() throws Exception {
         Bootstrap b = new Bootstrap();
         try {
-            b.group(new NioEventLoopGroup()) 
+            b.group(new NioEventLoopGroup())
              .channel(NioSocketChannel.class)
              .remoteAddress(new InetSocketAddress(host, port))
              .handler(new ChannelInitializer<SocketChannel>() {

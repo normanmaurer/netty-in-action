@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
+ * Listing 4.2  of <i>Netty in Action</i>
+ *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
 public class PlainNioServer {

@@ -1,12 +1,18 @@
 package com.manning.nettyinaction.chapter1;
 
-import java.lang.System;import java.net.InetSocketAddress;import java.net.ServerSocket;import java.nio.*;
-import java.nio.ByteBuffer;import java.nio.channels.*;
-import java.net.*;
-import java.nio.channels.SelectionKey;import java.nio.channels.Selector;import java.nio.channels.ServerSocketChannel;import java.nio.channels.SocketChannel;import java.util.*;
-import java.io.IOException;import java.util.Iterator;import java.util.Set;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
+ * Listing 1.5 of <i>Netty in Action</i>
+ *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
 public class PlainNioEchoServer {

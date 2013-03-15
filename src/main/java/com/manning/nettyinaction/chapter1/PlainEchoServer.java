@@ -9,6 +9,8 @@ import java.net.Socket;
 
 
 /**
+ * Listing 1.4 of <i>Netty in Action</i>
+ *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
 public class PlainEchoServer {

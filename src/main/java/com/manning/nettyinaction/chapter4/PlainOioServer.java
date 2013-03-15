@@ -1,16 +1,14 @@
 package com.manning.nettyinaction.chapter4;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
 
-
 /**
+ * Listing 4.1  of <i>Netty in Action</i>
+ *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
 public class PlainOioServer {

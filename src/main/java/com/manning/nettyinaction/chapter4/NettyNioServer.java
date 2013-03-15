@@ -1,22 +1,25 @@
 package com.manning.nettyinaction.chapter4;
 
-import com.manning.nettyinaction.chapter2.EchoServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundByteHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelStateHandlerAdapter;
+import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
+/**
+ * Listing 4.4  of <i>Netty in Action</i>
+ *
+ * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ */
 public class NettyNioServer {
 
     public void server(int port) throws Exception {
@@ -33,8 +36,12 @@ public class NettyNioServer {
                      ch.pipeline().addLast(new ChannelStateHandlerAdapter() {
                          @Override
                          public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                             ctx.readable(false);
                              ctx.write(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                         }
+
+                         @Override
+                         public void inboundBufferUpdated(ChannelHandlerContext ctx) throws Exception {
+                             ctx.fireInboundBufferUpdated();
                          }
                      });
                  }

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.netty:netty-all:4.0.0.Beta3-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.0.Beta3-SNAPSHOT/netty-all-4.0.0.Beta3-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.0.Beta3-SNAPSHOT/netty-all-4.0.0.Beta3-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.0.Beta3-SNAPSHOT/netty-all-4.0.0.Beta3-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
