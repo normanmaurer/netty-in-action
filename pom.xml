@@ -28,8 +28,8 @@
   <dependencies>
     <dependency>
       <groupId>io.netty</groupId>
-      <artifactId>netty</artifactId>
-      <version>4.0.0.Alpha5</version>
+      <artifactId>netty-all</artifactId>
+      <version>4.0.0.Beta3-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
