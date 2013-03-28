@@ -17,11 +17,6 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-      </plugin>
     </plugins>
   </build>
  
@@ -29,7 +24,7 @@
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-all</artifactId>
-      <version>4.0.0.Beta3</version>
+      <version>4.0.0.CR1</version>
     </dependency>
   </dependencies>
 </project>
