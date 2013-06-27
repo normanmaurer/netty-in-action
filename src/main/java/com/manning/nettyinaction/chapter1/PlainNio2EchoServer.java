@@ -30,6 +30,7 @@ public class PlainNio2EchoServer {
         serverChannel.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() {
             @Override
             public void completed(final AsynchronousSocketChannel channel, Object attachment) {
+                serverChannel.accept(null, this);
                 ByteBuffer buffer = ByteBuffer.allocate(100);
                 channel.read(buffer, buffer, new EchoCompletionHandler(channel));
             }
