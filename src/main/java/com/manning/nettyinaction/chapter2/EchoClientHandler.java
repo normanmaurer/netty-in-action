@@ -1,11 +1,11 @@
 package com.manning.nettyinaction.chapter2;
 
-import io.netty.buffer.BufUtil;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundByteHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
 /**
@@ -15,19 +15,17 @@ import io.netty.util.CharsetUtil;
  */
 @Sharable
 public class EchoClientHandler extends
-    ChannelInboundByteHandlerAdapter {
-
-    private final static ByteBuf MSG = Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8);
+        SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.write(MSG.duplicate());
+        ctx.write(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
     }
 
     @Override
-    public void inboundBufferUpdated(ChannelHandlerContext ctx,
+    public void messageReceived(ChannelHandlerContext ctx,
         ByteBuf in) {
-        System.out.println("Client received: " + BufUtil
+        System.out.println("Client received: " + ByteBufUtil
                 .hexDump(in.readBytes(in.readableBytes())));
     }
 

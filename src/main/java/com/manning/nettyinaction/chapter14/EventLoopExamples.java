@@ -1,7 +1,6 @@
 package com.manning.nettyinaction.chapter14;
 
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 
 import java.util.concurrent.Future;
 
