@@ -3,3 +3,6 @@ bin
 .settings
 .project
 .classpath
+.idea
+.DS_Store
+*.iml
