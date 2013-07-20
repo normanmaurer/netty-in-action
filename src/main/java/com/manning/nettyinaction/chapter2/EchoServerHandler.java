@@ -1,10 +1,10 @@
 package com.manning.nettyinaction.chapter2;
 
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.MessageList;
 
 /**
  * Listing 2.4  of <i>Netty in Action</i>
@@ -16,11 +16,15 @@ public class EchoServerHandler extends
         ChannelInboundHandlerAdapter {
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx,
-        MessageList<Object> msgs) {
-        System.out.println("Server received " + msgs.size() + " messages.");
+    public void channelRead(ChannelHandlerContext ctx,
+        Object msg) {
+        System.out.println("Server received: " + msg);
+        ctx.write(msg);
+    }
 
-        ctx.write(msgs).addListener(ChannelFutureListener.CLOSE);
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override

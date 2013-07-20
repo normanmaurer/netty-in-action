@@ -23,7 +23,7 @@ public class EchoClientHandler extends
     }
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx,
+    public void channelRead0(ChannelHandlerContext ctx,
         ByteBuf in) {
         System.out.println("Client received: " + ByteBufUtil
                 .hexDump(in.readBytes(in.readableBytes())));
