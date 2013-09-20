@@ -15,7 +15,6 @@ public class SquareEncoder extends MessageToByteEncoder<ByteBuf> {
     @Override
     public void encode(ChannelHandlerContext ctx, ByteBuf in, ByteBuf out)
             throws Exception {
-        ByteBuf buf = ctx.alloc().buffer();
         while (in.readableBytes() >= 2) {
             int value = in.readShort();
             out.writeChar(value * value);
