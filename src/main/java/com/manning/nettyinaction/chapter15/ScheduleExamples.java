@@ -1,4 +1,4 @@
-package com.manning.nettyinaction.chapter14;
+package com.manning.nettyinaction.chapter15;
 
 import io.netty.channel.Channel;
 

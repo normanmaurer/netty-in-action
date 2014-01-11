@@ -23,10 +23,10 @@ public class DefaultSpdyOrHttpChooser extends SpdyOrHttpChooser {
             return SelectedProtocol.UNKNOWN;
         }
         switch (protocol) {
-            case "spdy/2":
-                return SelectedProtocol.SPDY_2;
             case "spdy/3":
                 return SelectedProtocol.SPDY_3;
+            case "spdy/3.1":
+                return SelectedProtocol.SPDY_3_1;
             case "http/1.1":
                 return SelectedProtocol.HTTP_1_1;
             default:

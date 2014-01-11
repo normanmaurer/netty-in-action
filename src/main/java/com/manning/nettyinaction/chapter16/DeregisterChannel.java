@@ -1,7 +1,8 @@
-package com.manning.nettyinaction.chapter15;
+package com.manning.nettyinaction.chapter16;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -15,26 +16,16 @@ import java.net.InetSocketAddress;
 /**
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
-public class ReregisterChannel {
+public class DeregisterChannel {
 
-    public void reregister() {
+    public void deregister() {
         EventLoopGroup group = new NioEventLoopGroup();
-        final EventLoopGroup group2 = new NioEventLoopGroup();
-
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group).channel(NioSocketChannel.class)
                 .handler(new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
                     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf byteBuf) throws Exception {
-                        ctx.pipeline().remove(this);
-
-                        ChannelFuture cf = ctx.deregister();
-                        cf.addListener(new ChannelFutureListener() {
-                            @Override
-                            public void operationComplete(ChannelFuture future) throws Exception {
-                                group2.register(future.channel());
-                            }
-                        });
+                        ctx.deregister();
                     }
                 });
         ChannelFuture future = bootstrap.connect(new InetSocketAddress("www.manning.com", 80));
@@ -46,6 +37,22 @@ public class ReregisterChannel {
                 } else {
                     System.err.println("Connection attempt failed");
                     channelFuture.cause().printStackTrace();
+                }
+            }
+        });
+
+        // Do something which takes some amount of time
+
+        // Register channel again on eventloop
+        Channel channel = future.channel();
+        group.register(channel).addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future) throws Exception {
+                if (future.isSuccess()) {
+                    System.out.println("Channel registered");
+                } else {
+                    System.err.println("Register Channel on EventLoop failed");
+                    future.cause().printStackTrace();
                 }
             }
         });

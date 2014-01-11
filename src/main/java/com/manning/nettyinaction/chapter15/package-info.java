@@ -10,4 +10,4 @@
  *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
-package com.manning.nettyinaction.chapter14;
+package com.manning.nettyinaction.chapter15;

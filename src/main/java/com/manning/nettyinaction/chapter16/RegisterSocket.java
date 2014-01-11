@@ -1,4 +1,4 @@
-package com.manning.nettyinaction.chapter15;
+package com.manning.nettyinaction.chapter16;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
