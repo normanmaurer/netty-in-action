@@ -19,7 +19,7 @@ public class EchoClientHandler extends
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.write(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
+        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
     }
 
     @Override
