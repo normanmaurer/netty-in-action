@@ -23,7 +23,8 @@ public class EchoServerHandler extends
         ByteBuf in = (ByteBuf) msg;
         System.out.println("Server received: " + ByteBufUtil
                 .hexDump(in.readBytes(in.readableBytes())));
-        ctx.write(msg);
+        in.readerIndex(0);
+        ctx.write(in);
     }
 
     @Override
