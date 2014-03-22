@@ -27,17 +27,16 @@ import java.net.URL;
  */
 public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
     private final String wsUri;
-    private static File index;
+    private static final File INDEX;
 
     static {
         URL location = HttpRequestHandler.class.getProtectionDomain().getCodeSource().getLocation();
         try {
             String path = location.toURI() + "index.html";
             path = !path.contains("file:") ? path : path.substring(5);
-            System.out.println(path);
-            index = new File(path);
+            INDEX = new File(path);
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Unable to locate index.html", e);
         }
     }
 
@@ -54,7 +53,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
                 send100Continue(ctx);
             }
 
-            RandomAccessFile file = new RandomAccessFile(index, "r");
+            RandomAccessFile file = new RandomAccessFile(INDEX, "r");
 
             HttpResponse response = new DefaultHttpResponse(request.getProtocolVersion(), HttpResponseStatus.OK);
             response.headers().set(HttpHeaders.Names.CONTENT_TYPE, "text/html; charset=UTF-8");
