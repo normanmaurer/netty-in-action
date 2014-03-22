@@ -46,7 +46,7 @@ public class LogEventBroadcaster {
                 raf.seek(pointer);
                 String line;
                 while ((line = raf.readLine()) != null) {
-                    ch.write(new LogEvent(null, -1, file.getAbsolutePath(), line));
+                    ch.writeAndFlush(new LogEvent(null, -1, file.getAbsolutePath(), line));
                 }
                 pointer = raf.getFilePointer();
                 raf.close();
