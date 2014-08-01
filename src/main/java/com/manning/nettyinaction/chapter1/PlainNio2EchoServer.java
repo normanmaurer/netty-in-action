@@ -21,7 +21,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class PlainNio2EchoServer {
 
-    public void serve(int port) throws IOException {
+    public void server(int port) throws IOException {
         System.out.println("Listening for connections on port " + port);
         final AsynchronousServerSocketChannel serverChannel = AsynchronousServerSocketChannel.open();
         InetSocketAddress address = new InetSocketAddress(port);
