@@ -15,7 +15,7 @@ import java.net.Socket;
  */
 public class PlainEchoServer {
 
-    public void serve(int port) throws IOException {
+    public void server(int port) throws IOException {
         final ServerSocket socket = new ServerSocket(port);
         try {
             while (true) {
