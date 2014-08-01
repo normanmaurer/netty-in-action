@@ -17,7 +17,7 @@ import java.util.Set;
  */
 public class PlainNioEchoServer {
 
-    public void serve(int port) throws IOException {
+    public void server(int port) throws IOException {
         System.out.println("Listening for connections on port " + port);
         ServerSocketChannel serverChannel;
         Selector selector;
