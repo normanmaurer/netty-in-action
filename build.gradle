@@ -1,9 +1,11 @@
 apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 group = 'me.normanmaurer.nettyinaction'
 version = '0.1-SNAPSHOT'
 
-description = """netty-in-action"""
+description = 'netty-in-action'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -26,9 +28,10 @@ class NettyExec extends JavaExec {
 
     NettyExec() {
         classpath = project.sourceSets.main.runtimeClasspath
-        args System.getProperty('args').split(/\s+/)
+        args System?.getProperty('args')?.split(/\s+/) ?: []
     }
 
+    @Override
     void exec() {
         setMain "com.manning.nettyinaction.${className}"
         super.exec()
