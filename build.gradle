@@ -38,5 +38,9 @@ class NettyExec extends JavaExec {
     }
 }
 
-task echoServer(type: NettyExec) { className = 'chapter2.EchoServer' }
-task echoClient(type: NettyExec) { className = 'chapter2.EchoClient' }
+fileTree(dir: 'src/main').each { f ->
+    if (f.text.contains("public static void main(String[] args)")) {
+        def name = "${f.parentFile.name}.${f.name.split(".java")[0]}"
+        task (name, type: NettyExec) { className = name }
+    }
+}
