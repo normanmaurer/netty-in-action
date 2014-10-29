@@ -31,10 +31,8 @@ class NettyExec extends JavaExec {
         args System?.getProperty('args')?.split(/\s+/) ?: []
     }
 
-    @Override
-    void exec() {
-        setMain "com.manning.nettyinaction.${className}"
-        super.exec()
+    void setClassName(String className) {
+        main = "com.manning.nettyinaction.${className}"
     }
 }
 
