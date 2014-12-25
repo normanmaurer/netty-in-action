@@ -22,11 +22,9 @@ public class AbsIntegerEncoderTest {
         Assert.assertTrue(channel.writeOutbound(buf));
 
         Assert.assertTrue(channel.finish());
-        ByteBuf output = (ByteBuf) channel.readOutbound();
         for (int i = 1; i < 10; i++) {
-            Assert.assertEquals(i, output.readInt());
+            Assert.assertEquals(i, channel.readOutbound());
         }
-        Assert.assertFalse(output.isReadable());
         Assert.assertNull(channel.readOutbound());
     }
 }
