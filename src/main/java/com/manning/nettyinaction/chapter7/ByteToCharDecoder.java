@@ -7,9 +7,9 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * Listing 7.11  of <i>Netty in Action</i>
+ * Listing 7.8  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class ByteToCharDecoder extends
         ByteToMessageDecoder {
@@ -18,7 +18,7 @@ public class ByteToCharDecoder extends
     public void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)
             throws Exception {
         if (in.readableBytes() >= 2) {
-            out.add(Character.valueOf(in.readChar()));
+            out.add(in.readChar());
         }
     }
 }

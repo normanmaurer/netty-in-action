@@ -13,11 +13,11 @@ import io.netty.handler.codec.http.HttpResponseEncoder;
  *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
-public class HttpDecoderEncoderInitializer extends ChannelInitializer<Channel> {
+public class HttpPipelineInitializer extends ChannelInitializer<Channel> {
 
     private final boolean client;
 
-    public HttpDecoderEncoderInitializer(boolean client) {
+    public HttpPipelineInitializer(boolean client) {
         this.client = client;
     }
 

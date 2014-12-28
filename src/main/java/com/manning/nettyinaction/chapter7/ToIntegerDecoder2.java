@@ -7,9 +7,9 @@ import io.netty.handler.codec.ReplayingDecoder;
 import java.util.List;
 
 /**
- * Listing 7.4  of <i>Netty in Action</i>
+ * Listing 7.2  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class ToIntegerDecoder2 extends ReplayingDecoder<Void> {
 

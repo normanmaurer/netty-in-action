@@ -6,9 +6,9 @@ import io.netty.handler.codec.MessageToMessageEncoder;
 import java.util.List;
 
 /**
- * Listing 7.9 of <i>Netty in Action</i>
+ * Listing 7.6 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class IntegerToStringEncoder extends
         MessageToMessageEncoder<Integer> {

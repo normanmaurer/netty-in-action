@@ -15,9 +15,9 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import java.util.List;
 
 /**
- * Listing 7.10 of <i>Netty in Action</i>
+ * Listing 7.7 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @ChannelHandler.Sharable
 public class WebSocketConvertHandler extends MessageToMessageCodec<WebSocketFrame, WebSocketConvertHandler.WebSocketFrame> {
@@ -26,24 +26,26 @@ public class WebSocketConvertHandler extends MessageToMessageCodec<WebSocketFram
 
     @Override
     protected void encode(ChannelHandlerContext ctx, WebSocketFrame msg, List<Object> out) throws Exception {
+        ByteBuf payload = msg.getData().duplicate().retain();
         switch (msg.getType()) {
             case BINARY:
-                out.add(new BinaryWebSocketFrame(msg.getData()));
-                return;
+                out.add(new BinaryWebSocketFrame(payload));
+                break;
             case TEXT:
-                out.add(new TextWebSocketFrame(msg.getData()));
-                return;
+                out.add(new TextWebSocketFrame(payload));
+                break;
             case CLOSE:
-                out.add(new CloseWebSocketFrame(true, 0, msg.getData()));
-                return;
+                out.add(new CloseWebSocketFrame(true, 0, payload));
+                break;
             case CONTINUATION:
-                out.add(new ContinuationWebSocketFrame(msg.getData()));
-                return;
+                out.add(new ContinuationWebSocketFrame(payload));
+                break;
             case PONG:
-                out.add(new PongWebSocketFrame(msg.getData()));
-                return;
+                out.add(new PongWebSocketFrame(payload));
+                break;
             case PING:
-                out.add(new PingWebSocketFrame(msg.getData()));
+                out.add(new PingWebSocketFrame(payload));
+                break;
             default:
                 throw new IllegalStateException("Unsupported websocket msg " + msg);
         }
@@ -53,29 +55,19 @@ public class WebSocketConvertHandler extends MessageToMessageCodec<WebSocketFram
     protected void decode(ChannelHandlerContext ctx, io.netty.handler.codec.http.websocketx.WebSocketFrame msg, List<Object> out) throws Exception {
         if (msg instanceof BinaryWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.BINARY, msg.content().copy()));
-            return;
-        }
-        if (msg instanceof CloseWebSocketFrame) {
+        } else if (msg instanceof CloseWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.CLOSE, msg.content().copy()));
-            return;
-        }
-        if (msg instanceof PingWebSocketFrame) {
+        } else if (msg instanceof PingWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.PING, msg.content().copy()));
-            return;
-        }
-        if (msg instanceof PongWebSocketFrame) {
+        } else if (msg instanceof PongWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.PONG, msg.content().copy()));
-            return;
-        }
-        if (msg instanceof TextWebSocketFrame) {
+        } else if (msg instanceof TextWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.TEXT, msg.content().copy()));
-            return;
-        }
-        if (msg instanceof ContinuationWebSocketFrame) {
+        } else if (msg instanceof ContinuationWebSocketFrame) {
             out.add(new WebSocketFrame(WebSocketFrame.FrameType.CONTINUATION, msg.content().copy()));
-            return;
+        } else {
+            throw new IllegalStateException("Unsupported websocket msg " + msg);
         }
-        throw new IllegalStateException("Unsupported websocket msg " + msg);
     }
 
     public static final class WebSocketFrame {

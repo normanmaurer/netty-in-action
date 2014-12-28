@@ -5,9 +5,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
- * Listing 7.12  of <i>Netty in Action</i>
+ * Listing 7.9 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class CharToByteEncoder extends
         MessageToByteEncoder<Character> {
@@ -15,7 +15,7 @@ public class CharToByteEncoder extends
     @Override
     public void encode(ChannelHandlerContext ctx, Character msg, ByteBuf out)
             throws Exception {
-        out.writeChar(msg.charValue());
+        out.writeChar(msg);
     }
 }
 

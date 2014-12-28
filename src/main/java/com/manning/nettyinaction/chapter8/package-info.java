@@ -2,8 +2,8 @@
  * Contains code examples for chapter 8 of <i>Netty in Action</i>
  *
  * Listing 8.1:     SslChannelInitializer.java
- * Listing 8.2:     HttpDecoderEncoderInitializer.java
- * Listing 8.3:     HttpAggergatorInitializer.java
+ * Listing 8.2:     HttpPipelineInitializer.java
+ * Listing 8.3:     HttpAggregatorInitializer.java
  * Listing 8.4:     HttpCompressionInitializer.java
  * Listing 8.5:     HttpsCodecInitializer.java
  * Listing 8.6:     WebSocketServerInitializer.java
