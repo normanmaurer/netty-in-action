@@ -11,9 +11,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
- * Listing 2.5  of <i>Netty in Action</i>
+ * Listing 2.4  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class EchoClient {
 

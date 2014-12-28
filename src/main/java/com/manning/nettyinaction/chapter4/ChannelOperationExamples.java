@@ -23,7 +23,7 @@ public class ChannelOperationExamples {
     public static void writingToChannel() {
         Channel channel = null; // Get the channel reference from somewhere
         ByteBuf buf = Unpooled.copiedBuffer("your data", CharsetUtil.UTF_8);
-        ChannelFuture cf = channel.write(buf);
+        ChannelFuture cf = channel.writeAndFlush(buf);
 
         cf.addListener(new ChannelFutureListener() {
             @Override
@@ -45,11 +45,11 @@ public class ChannelOperationExamples {
     public static void writingToChannelManyThreads() {
         final Channel channel = null; // Get the channel reference from somewhere
         final ByteBuf buf = Unpooled.copiedBuffer("your data",
-                CharsetUtil.UTF_8);
+                CharsetUtil.UTF_8).retain();
         Runnable writer = new Runnable() {
             @Override
             public void run() {
-                channel.write(buf.duplicate());
+                channel.writeAndFlush(buf.duplicate());
             }
         };
         Executor executor = Executors.newCachedThreadPool();

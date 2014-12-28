@@ -7,11 +7,12 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.CharsetUtil;
 
 /**
- * Listing 2.4  of <i>Netty in Action</i>
+ * Listing 2.1  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @Sharable
 public class EchoServerHandler extends
@@ -21,8 +22,7 @@ public class EchoServerHandler extends
     public void channelRead(ChannelHandlerContext ctx,
         Object msg) {
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("Server received: " + ByteBufUtil
-                .hexDump(in));
+        System.out.println("Server received: " + in.toString(CharsetUtil.UTF_8));
         ctx.write(in);
     }
 

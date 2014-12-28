@@ -9,14 +9,14 @@ import java.nio.charset.Charset;
 /**
  * Listing 4.1  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class PlainOioServer {
 
     public void serve(int port) throws IOException {
         final ServerSocket socket = new ServerSocket(port);
         try {
-            while (true) {
+            for (;;) {
                 final Socket clientSocket = socket.accept();
                 System.out.println("Accepted connection from " + clientSocket);
 

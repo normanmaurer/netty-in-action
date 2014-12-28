@@ -6,9 +6,9 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
  *
- * Listing 6.9 of <i>Netty in Action</i>
+ * Listing 6.2 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @ChannelHandler.Sharable
 public class SimpleDiscardHandler extends SimpleChannelInboundHandler<Object> {

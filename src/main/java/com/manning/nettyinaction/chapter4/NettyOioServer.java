@@ -19,7 +19,7 @@ import java.nio.charset.Charset;
 /**
  * Listing 4.3  of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class NettyOioServer {
 
@@ -40,7 +40,7 @@ public class NettyOioServer {
                      ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
                          @Override
                          public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                             ctx.write(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                             ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
                          }
                      });
                  }

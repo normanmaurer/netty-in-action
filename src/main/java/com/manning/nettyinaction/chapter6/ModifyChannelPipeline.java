@@ -5,9 +5,9 @@ import io.netty.channel.ChannelPipeline;
 
 /**
 *
-* Listing 6.1 of <i>Netty in Action</i>
+* Listing 6.5 of <i>Netty in Action</i>
  *
-* @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
 */
 public class ModifyChannelPipeline {
    public static void modifyPipeline() {

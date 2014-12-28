@@ -38,7 +38,7 @@ public class NettyNioServer {
                      ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
                          @Override
                          public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                             ctx.write(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                             ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
                          }
                      });
                  }

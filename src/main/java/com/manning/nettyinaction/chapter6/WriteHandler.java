@@ -6,9 +6,9 @@ import io.netty.channel.ChannelHandlerContext;
 
 /**
  *
- * Listing 6.5 of <i>Netty in Action</i>
+ * Listing 6.9 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class WriteHandler extends ChannelHandlerAdapter {
 
@@ -20,7 +20,7 @@ public class WriteHandler extends ChannelHandlerAdapter {
     }
 
     public void send(String msg) {
-        ctx.write(msg);
+        ctx.writeAndFlush(msg);
     }
 }
 

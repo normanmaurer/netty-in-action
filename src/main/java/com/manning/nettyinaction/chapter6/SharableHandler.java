@@ -6,7 +6,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
  *
- * Listing 6.6 of <i>Netty in Action</i>
+ * Listing 6.10 of <i>Netty in Action</i>
  *
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
@@ -18,6 +18,5 @@ public class SharableHandler extends ChannelInboundHandlerAdapter {
         System.out.println("channel read message " + msg);
         ctx.fireChannelRead(msg);
     }
-
 }
 

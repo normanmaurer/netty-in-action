@@ -9,9 +9,9 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
 /**
- * Listing 2.6 of <i>Netty in Action</i>
+ * Listing 2.3 of <i>Netty in Action</i>
  *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @Sharable
 public class EchoClientHandler extends
@@ -25,8 +25,7 @@ public class EchoClientHandler extends
     @Override
     public void channelRead0(ChannelHandlerContext ctx,
         ByteBuf in) {
-        System.out.println("Client received: " + ByteBufUtil
-                .hexDump(in));
+        System.out.println("Client received: " + in.toString(CharsetUtil.UTF_8));
     }
 
     @Override
