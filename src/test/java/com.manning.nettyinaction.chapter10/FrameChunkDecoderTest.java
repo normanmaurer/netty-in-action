@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class FrameChunkDecoderTest {
 
@@ -32,7 +32,15 @@ public class FrameChunkDecoderTest {
 
 
         Assert.assertTrue(channel.finish());
-        Assert.assertEquals(buf.readBytes(2), channel.readInbound());
-        Assert.assertEquals(buf.skipBytes(4).readBytes(3), channel.readInbound());
+
+        ByteBuf read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(2), read);
+        read.release();
+
+        read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.skipBytes(4).readSlice(3), read);
+        read.release();
+
+        buf.release();
     }
 }

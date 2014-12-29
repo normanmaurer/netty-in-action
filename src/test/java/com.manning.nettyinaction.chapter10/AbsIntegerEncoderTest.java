@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class AbsIntegerEncoderTest {
 
@@ -26,5 +26,6 @@ public class AbsIntegerEncoderTest {
             Assert.assertEquals(i, channel.readOutbound());
         }
         Assert.assertNull(channel.readOutbound());
+        buf.release();
     }
 }

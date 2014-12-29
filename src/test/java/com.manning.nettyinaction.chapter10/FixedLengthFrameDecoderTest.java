@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class FixedLengthFrameDecoderTest {
 
@@ -24,9 +24,20 @@ public class FixedLengthFrameDecoderTest {
         Assert.assertTrue(channel.writeInbound(input.readBytes(7)));
 
         Assert.assertTrue(channel.finish());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
+        ByteBuf read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        Assert.assertNull(channel.readInbound());
+        buf.release();
     }
 
 
@@ -43,8 +54,19 @@ public class FixedLengthFrameDecoderTest {
         Assert.assertTrue(channel.writeInbound(input.readBytes(7)));
 
         Assert.assertTrue(channel.finish());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
-        Assert.assertEquals(buf.readBytes(3), channel.readInbound());
+        ByteBuf read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        read = (ByteBuf) channel.readInbound();
+        Assert.assertEquals(buf.readSlice(3), read);
+        read.release();
+
+        Assert.assertNull(channel.readInbound());
+        buf.release();
     }
 }
