@@ -9,7 +9,7 @@ import io.netty.util.CharsetUtil;
 import java.util.List;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class LogEventDecoder extends MessageToMessageDecoder<DatagramPacket> {
     @Override

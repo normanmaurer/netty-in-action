@@ -10,9 +10,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 
 
 /**
- * Listing 8.4 of <i>Netty in Action</i>
- *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class HttpCompressionInitializer extends ChannelInitializer<Channel> {
 

@@ -10,6 +10,7 @@ import javax.net.ssl.SSLContext;
 import java.net.InetSocketAddress;
 
 /**
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class SecureChatServer extends ChatServer {
 

@@ -10,7 +10,7 @@ import java.net.InetSocketAddress;
 import java.util.List;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class LogEventEncoder extends MessageToMessageEncoder<LogEvent> {
     private final InetSocketAddress remoteAddress;
@@ -21,10 +21,12 @@ public class LogEventEncoder extends MessageToMessageEncoder<LogEvent> {
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, LogEvent logEvent, List<Object> out) throws Exception {
-        ByteBuf buf = channelHandlerContext.alloc().buffer();
-        buf.writeBytes(logEvent.getLogfile().getBytes(CharsetUtil.UTF_8));
+        byte[] file = logEvent.getLogfile().getBytes(CharsetUtil.UTF_8);
+        byte[] msg = logEvent.getMsg().getBytes(CharsetUtil.UTF_8);
+        ByteBuf buf = channelHandlerContext.alloc().buffer(file.length + msg.length + 1);
+        buf.writeBytes(file);
         buf.writeByte(LogEvent.SEPARATOR);
-        buf.writeBytes(logEvent.getMsg().getBytes(CharsetUtil.UTF_8));
+        buf.writeBytes(msg);
         out.add(new DatagramPacket(buf, remoteAddress));
     }
 }

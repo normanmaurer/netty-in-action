@@ -15,9 +15,7 @@ import io.netty.util.CharsetUtil;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Listing 8.7 of <i>Netty in Action</i>
- *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class IdleStateHandlerInitializer extends ChannelInitializer<Channel> {
 

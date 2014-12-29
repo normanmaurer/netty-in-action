@@ -13,7 +13,7 @@ import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class LogEventBroadcaster {
     private final Bootstrap bootstrap;
@@ -61,7 +61,7 @@ public class LogEventBroadcaster {
     }
 
     public void stop() {
-        group.shutdown();
+        group.shutdownGracefully();
     }
 
     public static void main(String[] args) throws Exception {

@@ -9,9 +9,7 @@ import io.netty.handler.codec.http.HttpResponseDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 
 /**
- * Listing 8.2 of <i>Netty in Action</i>
- *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class HttpPipelineInitializer extends ChannelInitializer<Channel> {
 

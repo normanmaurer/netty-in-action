@@ -14,7 +14,7 @@ import io.netty.util.concurrent.ImmediateEventExecutor;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class ChatServer {
 
@@ -46,7 +46,6 @@ public class ChatServer {
     }
 
     public static void main(String[] args) {
-        args = new String[] {"8080"};
         if (args.length != 1) {
             System.err.println("Please give port as argument");
             System.exit(1);

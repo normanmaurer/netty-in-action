@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class BootstrapClient {
 
@@ -23,7 +23,6 @@ public class BootstrapClient {
                     @Override
                     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
                         System.out.println("Reveived data");
-                        byteBuf.clear();
                     }
                 });
         ChannelFuture future = bootstrap.connect(new InetSocketAddress("www.manning.com", 80));
@@ -40,7 +39,7 @@ public class BootstrapClient {
         });
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         BootstrapClient client = new BootstrapClient();
         client.bootstrap();
     }

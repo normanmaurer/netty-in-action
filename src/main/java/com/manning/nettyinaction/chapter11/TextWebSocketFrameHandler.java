@@ -22,7 +22,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
             ctx.pipeline().remove(HttpRequestHandler.class);
 
-            group.flushAndWrite(new TextWebSocketFrame("Client " + ctx.channel() + " joined"));
+            group.writeAndFlush(new TextWebSocketFrame("Client " + ctx.channel() + " joined"));
 
             group.add(ctx.channel());
         } else {
@@ -32,6 +32,6 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        group.flushAndWrite(msg.retain());
+        group.writeAndFlush(msg.retain());
     }
 }

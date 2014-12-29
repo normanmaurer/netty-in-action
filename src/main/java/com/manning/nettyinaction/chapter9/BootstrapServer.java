@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class BootstrapServer {
     public void bootstrap() {
@@ -22,7 +22,6 @@ public class BootstrapServer {
                     @Override
                     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
                         System.out.println("Reveived data");
-                        byteBuf.clear();
                     }
                 });
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(8080));

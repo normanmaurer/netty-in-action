@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioDatagramChannel;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class LogEventMonitor {
 
@@ -40,7 +40,7 @@ public class LogEventMonitor {
     }
 
     public void stop() {
-        group.shutdown();
+        group.shutdownGracefully();
     }
 
     public static void main(String[] args) throws Exception {

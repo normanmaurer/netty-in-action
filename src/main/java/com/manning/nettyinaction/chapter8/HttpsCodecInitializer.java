@@ -11,9 +11,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
 /**
- * Listing 8.5 of <i>Netty in Action</i>
- *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class HttpsCodecInitializer extends ChannelInitializer<Channel> {
 

@@ -32,7 +32,6 @@ public class BootstrapSharingEventLoopGroup {
                                     @Override
                                     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
                                         System.out.println("Reveived data");
-                                        in.clear();
                                     }
                                 });
                         bootstrap.group(ctx.channel().eventLoop());

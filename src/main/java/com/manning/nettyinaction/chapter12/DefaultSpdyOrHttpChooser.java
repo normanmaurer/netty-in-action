@@ -7,7 +7,7 @@ import org.eclipse.jetty.npn.NextProtoNego;
 import javax.net.ssl.SSLEngine;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class DefaultSpdyOrHttpChooser extends SpdyOrHttpChooser {
 

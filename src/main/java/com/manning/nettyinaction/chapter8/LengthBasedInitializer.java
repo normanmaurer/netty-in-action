@@ -9,9 +9,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 /**
- * Listing 8.10 of <i>Netty in Action</i>
- *
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class LengthBasedInitializer extends ChannelInitializer<Channel> {
 

@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class ChunkedWriteHandlerInitializer extends ChannelInitializer<Channel> {
     private final File file;

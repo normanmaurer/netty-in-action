@@ -13,7 +13,7 @@ import io.netty.util.AttributeKey;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class BootstrapClientWithOptionsAndAttrs {
     public void bootstrap() {
@@ -31,7 +31,6 @@ public class BootstrapClientWithOptionsAndAttrs {
                     @Override
                     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
                         System.out.println("Reveived data");
-                        byteBuf.clear();
                     }
                 });
         bootstrap.option(ChannelOption.SO_KEEPALIVE, true).option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000);

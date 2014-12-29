@@ -3,7 +3,7 @@ package com.manning.nettyinaction.chapter13;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public final class LogEvent {
     public static final byte SEPARATOR = (byte) ':';

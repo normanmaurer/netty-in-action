@@ -14,7 +14,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import java.net.InetSocketAddress;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class BootstrapWithInitializer {
 
@@ -36,7 +36,7 @@ public class BootstrapWithInitializer {
         });
     }
 
-    public final class ChannelInitializerImpl extends ChannelInitializer<Channel> {
+    public static final class ChannelInitializerImpl extends ChannelInitializer<Channel> {
         @Override
         protected void initChannel(Channel ch) throws Exception {
             ChannelPipeline pipeline = ch.pipeline();

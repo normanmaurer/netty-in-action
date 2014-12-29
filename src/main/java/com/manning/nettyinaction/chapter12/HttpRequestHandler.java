@@ -14,7 +14,7 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @ChannelHandler.Sharable
 public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {

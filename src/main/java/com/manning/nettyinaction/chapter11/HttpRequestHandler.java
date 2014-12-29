@@ -23,7 +23,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
+ * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
     private final String wsUri;
