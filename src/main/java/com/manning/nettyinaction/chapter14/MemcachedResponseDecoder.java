@@ -20,7 +20,6 @@ public class MemcachedResponseDecoder extends ByteToMessageDecoder {
     private byte opCode;
     private short keyLength;
     private byte extraLength;
-    private byte dataType;
     private short status;
     private int id;
     private long cas;
@@ -37,7 +36,7 @@ public class MemcachedResponseDecoder extends ByteToMessageDecoder {
                 opCode = in.readByte();
                 keyLength = in.readShort();
                 extraLength = in.readByte();
-                dataType = in.readByte();
+                in.skipBytes(1);
                 status = in.readShort();
                 totalBodySize = in.readInt();
                 id = in.readInt(); //referred to in the protocol spec as opaque
@@ -69,7 +68,6 @@ public class MemcachedResponseDecoder extends ByteToMessageDecoder {
                 out.add(new MemcachedResponse(
                         magic,
                         opCode,
-                        dataType,
                         status,
                         id,
                         cas,

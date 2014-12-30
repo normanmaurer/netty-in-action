@@ -4,7 +4,6 @@ package com.manning.nettyinaction.chapter14;
 public class MemcachedResponse {
     private final byte magic;
     private final byte opCode;
-    private final byte dataType;
     private final short status;
     private final int id;
     private final long cas;
@@ -14,11 +13,10 @@ public class MemcachedResponse {
     private final String data;
 
     public MemcachedResponse(byte magic, byte opCode,
-                             byte dataType, short status, int id, long cas,
+                             short status, int id, long cas,
                              int flags, int expires, String key, String data) {
         this.magic = magic;
         this.opCode = opCode;
-        this.dataType = dataType;
         this.status = status;
         this.id = id;
         this.cas = cas;
@@ -34,10 +32,6 @@ public class MemcachedResponse {
 
     public byte opCode() {
         return opCode;
-    }
-
-    public byte dataType() {
-        return dataType;
     }
 
     public short status() {
