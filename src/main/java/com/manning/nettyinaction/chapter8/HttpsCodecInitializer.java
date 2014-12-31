@@ -5,9 +5,9 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpClientCodec;
 import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslHandler;
 
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 
 /**
@@ -15,10 +15,10 @@ import javax.net.ssl.SSLEngine;
  */
 public class HttpsCodecInitializer extends ChannelInitializer<Channel> {
 
-    private final SSLContext context;
+    private final SslContext context;
     private final boolean client;
 
-    public HttpsCodecInitializer(SSLContext context, boolean client) {
+    public HttpsCodecInitializer(SslContext context, boolean client) {
         this.context = context;
         this.client = client;
     }
@@ -26,8 +26,7 @@ public class HttpsCodecInitializer extends ChannelInitializer<Channel> {
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        SSLEngine engine = context.createSSLEngine();
-        engine.setUseClientMode(client);
+        SSLEngine engine = context.newEngine(ch.alloc());
         pipeline.addFirst("ssl", new SslHandler(engine));
 
         if (client) {
