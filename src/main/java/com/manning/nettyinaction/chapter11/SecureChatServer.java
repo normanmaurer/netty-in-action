@@ -1,12 +1,12 @@
 package com.manning.nettyinaction.chapter11;
 
-import com.manning.nettyinaction.util.BogusSslContextFactory;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.group.ChannelGroup;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.util.SelfSignedCertificate;
 
-import javax.net.ssl.SSLContext;
 import java.net.InetSocketAddress;
 
 /**
@@ -14,9 +14,9 @@ import java.net.InetSocketAddress;
  */
 public class SecureChatServer extends ChatServer {
 
-    private final SSLContext context;
+    private final SslContext context;
 
-    public SecureChatServer(SSLContext context) {
+    public SecureChatServer(SslContext context) {
         this.context = context;
     }
 
@@ -25,14 +25,14 @@ public class SecureChatServer extends ChatServer {
         return new SecureChatServerIntializer(group, context);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         if (args.length != 1) {
             System.err.println("Please give port as argument");
             System.exit(1);
         }
         int port = Integer.parseInt(args[0]);
-
-        SSLContext context = BogusSslContextFactory.getServerContext();
+        SelfSignedCertificate cert = new SelfSignedCertificate();
+        SslContext context = SslContext.newServerContext(cert.certificate(), cert.privateKey());
         final SecureChatServer endpoint = new SecureChatServer(context);
         ChannelFuture future = endpoint.start(new InetSocketAddress(port));
 

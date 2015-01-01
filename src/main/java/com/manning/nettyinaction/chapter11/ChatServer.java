@@ -45,7 +45,7 @@ public class ChatServer {
         group.shutdownGracefully();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         if (args.length != 1) {
             System.err.println("Please give port as argument");
             System.exit(1);
