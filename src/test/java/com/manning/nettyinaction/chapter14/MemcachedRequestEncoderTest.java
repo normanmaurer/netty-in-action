@@ -19,7 +19,7 @@ public class MemcachedRequestEncoderTest {
         ByteBuf encoded = (ByteBuf) channel.readOutbound();
 
         Assert.assertNotNull(encoded);
-        Assert.assertEquals(request.magic(), encoded.readByte());
+        Assert.assertEquals(request.magic(), encoded.readUnsignedByte());
         Assert.assertEquals(request.opCode(), encoded.readByte());
         Assert.assertEquals(4, encoded.readShort());
         Assert.assertEquals((byte) 0x08, encoded.readByte());
