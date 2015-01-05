@@ -26,6 +26,5 @@ public class AbsIntegerEncoderTest {
             Assert.assertEquals(i, channel.readOutbound());
         }
         Assert.assertNull(channel.readOutbound());
-        buf.release();
     }
 }
