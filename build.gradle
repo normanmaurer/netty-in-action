@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+group = 'me.normanmaurer.nettyinaction'
+version = '0.1-SNAPSHOT'
+
+description = 'netty-in-action'
+
+sourceSets.test.java.srcDirs = sourceSets.main.java.srcDirs
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty-all', version:'4.0.17.Final'
+    compile group: 'junit', name: 'junit', version:'4.11'
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version:'2.5.0'
+    compile group: 'org.eclipse.jetty.npn', name: 'npn-api', version:'1.1.0.v20120525'
+    runtime group: 'org.mortbay.jetty.npn', name: 'npn-boot', version:'1.1.5.v20130313'
+}
+
+class NettyExec extends JavaExec {
+
+    String className
+
+    NettyExec() {
+        classpath = project.sourceSets.main.runtimeClasspath
+        args System?.getProperty('args')?.split(/\s+/) ?: []
+    }
+
+    void setClassName(String className) {
+        main = "com.manning.nettyinaction.${className}"
+    }
+}
+
+fileTree(dir: 'src/main').each { f ->
+    if (f.text.contains("public static void main(String[] args)")) {
+        def name = "${f.parentFile.name}.${f.name.split(".java")[0]}" as String
+        task (name, type: NettyExec) { className = name }
+    }
+}
