@@ -6,3 +6,4 @@ bin
 .idea
 .DS_Store
 *.iml
+/.idea
