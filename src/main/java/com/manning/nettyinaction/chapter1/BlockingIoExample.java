@@ -16,21 +16,21 @@ import java.net.Socket;
 public abstract class BlockingIoExample {
 
     public void serve(int portNumber) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(portNumber);
-        Socket clientSocket = serverSocket.accept();
-        BufferedReader in = new BufferedReader(
+        ServerSocket serverSocket = new ServerSocket(portNumber);       //1
+        Socket clientSocket = serverSocket.accept();                    //2
+        BufferedReader in = new BufferedReader(                         //3
                 new InputStreamReader(clientSocket.getInputStream()));
         PrintWriter out =
                 new PrintWriter(clientSocket.getOutputStream(), true);
         String request, response;
-        while ((request = in.readLine()) != null) {
-            if ("Done".equals(request)) {
+        while ((request = in.readLine()) != null) {                     //4
+            if ("Done".equals(request)) {                               //5
                 break;
             }
         }
-        response = processRequest(request);
-        out.println(response);
-    }
+        response = processRequest(request);                             //6
+        out.println(response);                                          //7
+    }                                                                   //8
 
     protected abstract String processRequest(String request);
 }
