@@ -14,21 +14,21 @@ import java.nio.charset.Charset;
 public class PlainOioServer {
 
     public void serve(int port) throws IOException {
-        final ServerSocket socket = new ServerSocket(port);
+        final ServerSocket socket = new ServerSocket(port);                          //1
         try {
             for (;;) {
-                final Socket clientSocket = socket.accept();
+                final Socket clientSocket = socket.accept();                         //2
                 System.out.println("Accepted connection from " + clientSocket);
 
                 new Thread(new Runnable() {
                     @Override
-                    public void run() {
+                    public void run() {                                         //3
                         OutputStream out;
                         try {
                             out = clientSocket.getOutputStream();
-                            out.write("Hi!\r\n".getBytes(Charset.forName("UTF-8")));
+                            out.write("Hi!\r\n".getBytes(Charset.forName("UTF-8")));//4
                             out.flush();
-                            clientSocket.close();
+                            clientSocket.close();                                   //5
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -39,7 +39,7 @@ public class PlainOioServer {
                             }
                         }
                     }
-                }).start();
+                }).start();                                                         //6
             }
         } catch (IOException e) {
             e.printStackTrace();

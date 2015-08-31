@@ -27,26 +27,27 @@ public class NettyNioServer {
                 Unpooled.copiedBuffer("Hi!\r\n", Charset.forName("UTF-8")));
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(new NioEventLoopGroup(), new NioEventLoopGroup())
+            ServerBootstrap b = new ServerBootstrap();              //1
+            b.group(group)                                          //2
              .channel(NioServerSocketChannel.class)
              .localAddress(new InetSocketAddress(port))
-             .childHandler(new ChannelInitializer<SocketChannel>() {
+             .childHandler(new ChannelInitializer<SocketChannel>() {//3
                  @Override
                  public void initChannel(SocketChannel ch) 
                      throws Exception {
-                     ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
+                     ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {//4
                          @Override
                          public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                             ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                             ctx.writeAndFlush(buf.duplicate()) //5
+                                     .addListener(ChannelFutureListener.CLOSE);
                          }
                      });
                  }
              });
-            ChannelFuture f = b.bind().sync();
+            ChannelFuture f = b.bind().sync();          //6
             f.channel().closeFuture().sync();
         } finally {
-            group.shutdownGracefully().sync();
+            group.shutdownGracefully().sync();  //7
         }
     }
 }
