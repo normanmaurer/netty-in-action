@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+group = 'me.normanmaurer.nettyinaction'
+version = '0.1-SNAPSHOT'
+
+description = 'netty-in-action'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty-all', version:'4.0.25.Final'
+    compile group: 'junit', name: 'junit', version:'4.11'
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version:'2.5.0'
+    compile group: 'org.eclipse.jetty.npn', name: 'npn-api', version:'1.1.0.v20120525'
+    runtime group: 'org.mortbay.jetty.npn', name: 'npn-boot', version:'1.1.10.v20150130'
+}
+
+idea.project.ipr {
+    withXml { provider ->
+        provider.node.component
+                .find { it.@name == 'VcsDirectoryMappings' }
+                .mapping.@vcs = 'Git'
+    }
+}
+
+task chatServer(group: 'Examples', type: JavaExec, dependsOn: ['classes']) {
+    main = 'com.manning.nettyinaction.chapter11.ChatServer'
+    args = ['9999']
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task secureChatServer(group: 'Examples', type: JavaExec, dependsOn: ['classes']) {
+    main = 'com.manning.nettyinaction.chapter11.SecureChatServer'
+    args = ['9999']
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task spdyServer(group: 'Examples', type: JavaExec, dependsOn: ['classes']) {
+    main = 'com.manning.nettyinaction.chapter12.SpdyServer'
+    args = ['9999']
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task logEventMonitor(group: 'Examples', type: JavaExec, dependsOn: ['classes']) {
+    main = 'com.manning.nettyinaction.chapter13.LogEventMonitor'
+    args = ['9999']
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task logEventBroadcaster(group: 'Examples', type: JavaExec, dependsOn: ['classes']) {
+    main = 'com.manning.nettyinaction.chapter13.LogEventBroadcaster'
+    args = ['9999', "$buildDir/log/messages"]
+    classpath = sourceSets.main.runtimeClasspath
+}
