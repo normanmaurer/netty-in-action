@@ -22,16 +22,15 @@ public class ChannelOperationExamples {
      */
     public static void writingToChannel() {
         Channel channel = null; // Get the channel reference from somewhere
-        ByteBuf buf = Unpooled.copiedBuffer("your data", CharsetUtil.UTF_8);
-        ChannelFuture cf = channel.writeAndFlush(buf);
-
-        cf.addListener(new ChannelFutureListener() {
+        ByteBuf buf = Unpooled.copiedBuffer("your data", CharsetUtil.UTF_8);//1
+        ChannelFuture cf = channel.writeAndFlush(buf);                      //2
+        cf.addListener(new ChannelFutureListener() {                        //3
             @Override
             public void operationComplete(ChannelFuture future) {
-                if (future.isSuccess()) {
+                if (future.isSuccess()) {                                   //4
                     System.out.println("Write successful");
                 } else {
-                    System.err.println("Write error");
+                    System.err.println("Write error");                      //5
                     future.cause().printStackTrace();
                 }
             }
@@ -45,20 +44,20 @@ public class ChannelOperationExamples {
     public static void writingToChannelManyThreads() {
         final Channel channel = null; // Get the channel reference from somewhere
         final ByteBuf buf = Unpooled.copiedBuffer("your data",
-                CharsetUtil.UTF_8).retain();
-        Runnable writer = new Runnable() {
+                CharsetUtil.UTF_8).retain();                //1
+        Runnable writer = new Runnable() {                  //2
             @Override
             public void run() {
                 channel.writeAndFlush(buf.duplicate());
             }
         };
-        Executor executor = Executors.newCachedThreadPool();
+        Executor executor = Executors.newCachedThreadPool();//3
 
         // write in one thread
-        executor.execute(writer);
+        executor.execute(writer);                           //4
 
         // write in another thread
-        executor.execute(writer);
+        executor.execute(writer);                           //5
 
     }
 }
