@@ -12,12 +12,12 @@ import io.netty.util.ReferenceCountUtil;
  * @author <a href="mailto:norman.maurer@googlemail.com">Norman Maurer</a>
  */
 @ChannelHandler.Sharable
-public class DiscardInboundHandler extends ChannelInboundHandlerAdapter {
+public class DiscardInboundHandler extends ChannelInboundHandlerAdapter { //1
 
     @Override
     public void channelRead(ChannelHandlerContext ctx,
                                      Object msg) {
-        ReferenceCountUtil.release(msg);
+        ReferenceCountUtil.release(msg);                                  //2
     }
 
 }

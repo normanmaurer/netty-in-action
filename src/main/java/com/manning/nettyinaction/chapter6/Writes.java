@@ -20,8 +20,8 @@ public class Writes {
      */
     public static void writeViaChannel(ChannelHandlerContext context) {
         ChannelHandlerContext ctx = context;
-        Channel channel = ctx.channel();
-        channel.write(Unpooled.copiedBuffer("Netty in Action",
+        Channel channel = ctx.channel();                        //1
+        channel.write(Unpooled.copiedBuffer("Netty in Action",  //2
                 CharsetUtil.UTF_8));
 
     }
@@ -32,8 +32,8 @@ public class Writes {
      */
     public static void writeViaChannelPipeline(ChannelHandlerContext context) {
         ChannelHandlerContext ctx = context;
-        ChannelPipeline pipeline = ctx.pipeline();
-        pipeline.write(Unpooled.copiedBuffer("Netty in Action",
+        ChannelPipeline pipeline = ctx.pipeline();              //1
+        pipeline.write(Unpooled.copiedBuffer("Netty in Action", //2
                 CharsetUtil.UTF_8));
 
     }

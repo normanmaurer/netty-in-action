@@ -12,15 +12,14 @@ import io.netty.channel.ChannelPipeline;
 public class ModifyChannelPipeline {
    public static void modifyPipeline() {
        ChannelPipeline pipeline = null; // get reference to pipeline;
-       FirstHandler firstHandler = new FirstHandler();
-       pipeline.addLast("handler1", firstHandler);
-       pipeline.addFirst("handler2", new SecondHandler());
-       pipeline.addLast("handler3", new ThirdHandler());
+       FirstHandler firstHandler = new FirstHandler();              //1
+       pipeline.addLast("handler1", firstHandler);                  //2
+       pipeline.addFirst("handler2", new SecondHandler());          //3
+       pipeline.addLast("handler3", new ThirdHandler());            //4
 
-       pipeline.remove("handler3");
-       pipeline.remove(firstHandler);
-
-       pipeline.replace("handler2", "handler4", new ForthHandler());
+       pipeline.remove("handler3");                                 //5
+       pipeline.remove(firstHandler);                               //6
+       pipeline.replace("handler2", "handler4", new ForthHandler());//7
 
    }
 
