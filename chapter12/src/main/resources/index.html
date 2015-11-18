@@ -1,0 +1,115 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+         Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>WebSocket ChatServer</title>
+    <style type="text/css">
+        #ui * {
+            width: 100%;
+        }
+
+        #ui textarea {
+            height: 15em;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function log(msg) {
+            var log = $('#log')
+            log.append(msg + " \n").scrollTop(log[0].scrollHeight - log.height());
+        }
+        $(function () {
+            $('#url').val((location.protocol.indexOf('https') == -1 ? 'ws://' : 'wss://') + location.host + '/ws')
+
+            if (!WebSocket) {
+                $('#not-supported').show()
+            } else {
+                var ws = null
+                $('#connect').click(function () {
+                    if (ws == null || ws.readyState != 1) {
+                        ws = new WebSocket($('#url').val())
+
+                        ws.onerror = function (e) {
+                            log('Error : ' + e.message)
+                        }
+
+                        ws.onopen = function () {
+                            log('connected')
+                        }
+
+                        ws.onclose = function () {
+                            log('disconnected')
+                        }
+
+                        ws.onmessage = function (d) {
+                            log('Response : ' + d.data)
+                        }
+
+                        $('#send').click(function () {
+                            var msg = $('#msg').val()
+                            $('#msg').val('')
+                            if (ws.send(msg)) {
+                                log('Message sent')
+                            } else {
+                                log('Message not sent')
+                            }
+                        })
+
+                    } else {
+                        log('closing connection')
+                        ws.close()
+                    }
+                })
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+<div id="not-supported" style="float: left; width: 600px; margin-left: 10px; display: none">
+    <p>Uh-oh, the browser you're using doesn't have native support for WebSocket. That means you can't run this
+        demo.</p>
+
+    <p>The following link lists the browsers that support WebSocket:</p>
+
+    <p><a href="http://caniuse.com/#feat=websockets">http://caniuse.com/#feat=websockets</a></p>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <div>Enter a message below to send</div>
+            <input type="text" id="msg"/>
+            <input type="submit" value="Send" id="send"/>
+        </td>
+        <td id="ui">
+            <input type="text" id="url"/>
+            <textarea id="log" disabled></textarea>
+            <input type="submit" id="connect" value="Connect"/>
+        </td>
+    </tr>
+</table>
+<div style="float: left; width: 600px; margin-left: 10px;">
+    <p><br><strong>Instructions:</strong></p>
+    <table class="instructions" cellspacing="0px" cellpadding="2px">
+        <tr>
+            <td valign="top" nowrap>Step 1: &nbsp;</td>
+            <td valign="top">Press the <strong>Connect</strong> button.</td>
+        </tr>
+        <tr>
+            <td valign="top" nowrap>Step 2: &nbsp;</td>
+            <td valign="top">Once connected, enter a message and press the <strong>Send</strong> button. The server's
+                response will
+                appear in the <strong>Log</strong> section. You can send as many messages as you like
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
