@@ -5,14 +5,11 @@ by Norman Maurer and Marvin Allen Wolfthal.
 Enjoy! Feedback and PR's welcome!
 
 
-## Pre-requisites
-
-:
+Prerequisites
 
 	JDK 1.7.0u71 or better
 
 	Maven 3.2.3 or better
-
 
 
 If you want to build everything at once, from the top directory run
@@ -26,4 +23,3 @@ If you want to build only single projects then from the top directory first run
 
 
 This will make the utils jar available to all the projects.
-
