@@ -26,7 +26,7 @@
             <id>ChatServer</id>
             <properties>
                 <mainClass>nia.chapter12.ChatServer</mainClass>
-                <port>9999</port>
+                <port>8888</port>
             </properties>
             <build>
                 <plugins>
@@ -51,7 +51,7 @@
             <id>SecureChatServer</id>
             <properties>
                 <mainClass>nia.chapter12.SecureChatServer</mainClass>
-                <port>9999</port>
+                <port>8888</port>
             </properties>
             <build>
                 <plugins>

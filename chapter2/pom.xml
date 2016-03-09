@@ -24,7 +24,7 @@
 
     <properties>
         <echo-server.hostname>localhost</echo-server.hostname>
-        <echo-server.port>9999</echo-server.port>
+        <echo-server.port>8888</echo-server.port>
     </properties>
 
     <build>

@@ -1,0 +1,80 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Chapter 2. Your First Netty Application - Echo App
+[INFO] Chapter 2. Echo Client
+[INFO] Chapter 2. Echo Server
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Chapter 2. Your First Netty Application - Echo App 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ chapter2 ---
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Chapter 2. Echo Client 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ echo-client ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ echo-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ echo-client ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to D:\opt\netty\netty-in-action\chapter2\Client\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ echo-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\opt\netty\netty-in-action\chapter2\Client\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ echo-client ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ echo-client ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ echo-client ---
+[INFO] Building jar: D:\opt\netty\netty-in-action\chapter2\Client\target\echo-client-2.0-SNAPSHOT.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Chapter 2. Echo Server 2.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ echo-server ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ echo-server ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ echo-server ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to D:\opt\netty\netty-in-action\chapter2\Server\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ echo-server ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\opt\netty\netty-in-action\chapter2\Server\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ echo-server ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ echo-server ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ echo-server ---
+[INFO] Building jar: D:\opt\netty\netty-in-action\chapter2\Server\target\echo-server-2.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Chapter 2. Your First Netty Application - Echo App . SUCCESS [  0.134 s]
+[INFO] Chapter 2. Echo Client ............................. SUCCESS [  1.509 s]
+[INFO] Chapter 2. Echo Server ............................. SUCCESS [  0.139 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.886 s
+[INFO] Finished at: 2015-11-18T17:14:10-05:00
+[INFO] Final Memory: 18M/216M
+[INFO] ------------------------------------------------------------------------
