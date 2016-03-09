@@ -1,14 +1,26 @@
-This Repository contains the source-code for all chapters of the [Netty in Action Book](http://manning.com/maurer).
+This Repository contains the source-code for all chapters of the book [Netty in Action](http://manning.com/maurer)
+by Norman Maurer and Marvin Allen Wolfthal.
 
-Enjoy and feedback / PR's welcome!
+Latest version: https://github.com/normanmaurer/netty-in-action/tree/2.0-SNAPSHOT
 
-## Pre-requisites
+Enjoy! Feedback and PR's welcome!
 
-- JDK 1.7.0u71 or better
-- Maven 3.2.3 or better
 
-## Troubleshooting
+Prerequisites
 
-- If you're hitting a `NoSuchMethodError` when starting chapter 12's SPDY server,
-  edit `pom.xml` and change the version of `npn.boot.version` to one that matches
-  your JDK's version in [this table](http://www.eclipse.org/jetty/documentation/current/npn-chapter.html#npn-versions).
+	JDK 1.7.0u71 or better
+
+	Maven 3.2.3 or better
+
+
+If you want to build everything at once, from the top directory run
+
+	mvn install
+
+
+If you want to build only single projects then from the top directory first run
+
+	mvn install -pl utils
+
+
+This will make the utils jar available to all the projects.
