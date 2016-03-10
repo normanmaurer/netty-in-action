@@ -52,8 +52,12 @@
                         $('#send').click(function () {
                             var msg = $('#msg').val()
                             $('#msg').val('')
-                            ws.send(msg)
-                            log('Message sent')
+                            if( ws.readyState == WebSocket.OPEN ) {
+	                            ws.send(msg)
+	                            log('Message sent')
+	                        } else {
+	                        	log('Message not sent')
+	                        }
                         })
 
                     } else {
