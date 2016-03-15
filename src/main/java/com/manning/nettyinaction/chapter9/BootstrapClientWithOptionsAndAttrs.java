@@ -17,7 +17,7 @@ import java.net.InetSocketAddress;
  */
 public class BootstrapClientWithOptionsAndAttrs {
     public void bootstrap() {
-        final AttributeKey<Integer> id = new AttributeKey<Integer>("ID");
+        final AttributeKey<Integer> id = AttributeKey.valueOf("ID");
 
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(new NioEventLoopGroup()).channel(NioSocketChannel.class)
@@ -30,7 +30,7 @@ public class BootstrapClientWithOptionsAndAttrs {
 
                     @Override
                     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
-                        System.out.println("Reveived data");
+                        System.out.println("Received data");
                     }
                 });
         bootstrap.option(ChannelOption.SO_KEEPALIVE, true).option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000);
