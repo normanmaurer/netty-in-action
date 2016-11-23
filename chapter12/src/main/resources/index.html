@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
 
@@ -46,16 +47,13 @@
                         }
 
                         ws.onmessage = function (d) {
-                            log('Response : ' + d.data)
+                            log(d.data)
                         }
 
                         $('#send').click(function () {
                             var msg = $('#msg').val()
-                            $('#msg').val('')
-                            if (ws.send(msg)) {
-                                log('Message sent')
-                            } else {
-                                log('Message not sent')
+                            if (msg.trim()) {
+                                ws.send(msg)
                             }
                         })
 
