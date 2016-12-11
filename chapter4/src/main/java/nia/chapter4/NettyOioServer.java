@@ -45,5 +45,9 @@ public class NettyOioServer {
             group.shutdownGracefully().sync();
         }
     }
+
+    public static void main(String[] args) throws Exception {
+        new NettyOioServer().server(8888);
+    }
 }
 

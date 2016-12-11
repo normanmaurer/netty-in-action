@@ -43,4 +43,8 @@ public class PlainOioServer {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) throws Exception{
+        new PlainOioServer().serve(8888);
+    }
 }
