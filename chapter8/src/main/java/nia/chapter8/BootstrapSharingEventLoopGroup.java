@@ -20,6 +20,11 @@ import java.net.InetSocketAddress;
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
  */
 public class BootstrapSharingEventLoopGroup {
+
+    public static void main(String[] args) {
+        new BootstrapSharingEventLoopGroup().bootstrap();
+    }
+
     public void bootstrap() {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(new NioEventLoopGroup(), new NioEventLoopGroup())
