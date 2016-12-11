@@ -1,9 +1,5 @@
 package nia.chapter6;
 
-/**
- * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
- */
-
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
