@@ -29,11 +29,7 @@ public class EchoClientHandler
      */
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
-        byte[] b = new byte[in.readableBytes()];
-        in.getBytes(0, b, 0, in.readableBytes());
-        String s = new String(b);
-        //System.out.println("Client received: " + ByteBufUtil.hexDump(in) + ":" + s);
-        System.out.println("Client received: " + s);
+        System.out.println("Client received: " + in.toString(CharsetUtil.UTF_8));
     }
 
     /**
