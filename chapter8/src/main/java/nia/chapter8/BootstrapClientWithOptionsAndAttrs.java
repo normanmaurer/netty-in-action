@@ -18,6 +18,11 @@ import java.net.InetSocketAddress;
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class BootstrapClientWithOptionsAndAttrs {
+
+    public static void main(String[] args) {
+        new BootstrapClientWithOptionsAndAttrs().bootstrap();
+    }
+
     public void bootstrap() {
         final AttributeKey<Integer> id = new AttributeKey<Integer>("ID");
         Bootstrap bootstrap = new Bootstrap();

@@ -16,6 +16,10 @@ import java.net.InetSocketAddress;
  */
 public class BootstrapWithInitializer {
 
+    public static void main(String[] args) {
+        new BootstrapWithInitializer().bootstrap();
+    }
+
     public void bootstrap() {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(new NioEventLoopGroup(), new NioEventLoopGroup())

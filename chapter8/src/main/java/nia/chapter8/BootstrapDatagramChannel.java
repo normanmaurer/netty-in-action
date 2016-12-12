@@ -18,6 +18,11 @@ import java.net.InetSocketAddress;
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
  */
 public class BootstrapDatagramChannel {
+
+    public static void main(String[] args) {
+        new BootstrapDatagramChannel().bootstrap();
+    }
+
     public void bootstrap() {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(new OioEventLoopGroup()).channel(OioDatagramChannel.class).handler(
