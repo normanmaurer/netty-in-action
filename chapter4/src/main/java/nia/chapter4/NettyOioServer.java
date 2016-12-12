@@ -34,7 +34,7 @@ public class NettyOioServer {
                         @Override
                         public void channelActive(ChannelHandlerContext ctx)
                             throws Exception {
-                            ctx.write(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                            ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
                         }
                     });
                 }
