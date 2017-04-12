@@ -9,6 +9,7 @@
     <name>Sample Code for Netty in Action</name>
     <modules>
         <module>utils</module>
+        <module>chapter1</module>
         <module>chapter2</module>
         <module>chapter4</module>
         <module>chapter6</module>
