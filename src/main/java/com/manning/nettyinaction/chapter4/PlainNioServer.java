@@ -22,13 +22,13 @@ public class PlainNioServer {
         serverChannel.configureBlocking(false);
         ServerSocket ss = serverChannel.socket();
         InetSocketAddress address = new InetSocketAddress(port);
-        ss.bind(address);
-        Selector selector = Selector.open();
-        serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+        ss.bind(address);                                           //2
+        Selector selector = Selector.open();                        //2
+        serverChannel.register(selector, SelectionKey.OP_ACCEPT);   //3
         final ByteBuffer msg = ByteBuffer.wrap("Hi!\r\n".getBytes());
         for (;;) {
             try {
-                selector.select();
+                selector.select();                                  //4
             } catch (IOException ex) {
                 ex.printStackTrace();
                 // handle exception
