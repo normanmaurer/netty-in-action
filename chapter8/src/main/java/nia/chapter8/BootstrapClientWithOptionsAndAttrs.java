@@ -19,7 +19,7 @@ import java.net.InetSocketAddress;
  */
 public class BootstrapClientWithOptionsAndAttrs {
     public void bootstrap() {
-        final AttributeKey<Integer> id = new AttributeKey<Integer>("ID");
+        final AttributeKey<Integer> id = AttributeKey.newInstance("ID");
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(new NioEventLoopGroup())
             .channel(NioSocketChannel.class)
