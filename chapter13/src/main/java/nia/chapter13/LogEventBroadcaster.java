@@ -12,58 +12,28 @@ import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 13.3 of <i>Netty in Action</i>
+ * Listing 13.3 LogEventBroadcaster
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class LogEventBroadcaster {
-    private Bootstrap bootstrap;
-    private InetSocketAddress address;
-    private File file;
-    private EventLoopGroup group;
+    private final EventLoopGroup group;
+    private final Bootstrap bootstrap;
+    private final File file;
 
-    public LogEventBroadcaster(int port, String logfile) throws Exception {
-        file = new File(logfile);
-        if (!file.exists()) {
-            throw new Exception("logfile " + logfile + " not found");
-        }
-        address = new InetSocketAddress("255.255.255.255", port);
-    }
-
-    public static void main(String[] args)
-        throws Exception {
-        if (args.length != 2) {
-            throw new IllegalArgumentException();
-        }
-        int port = Integer.parseInt(args[0]);
-        String logfile = args[1];
-        LogEventBroadcaster broadcaster =
-            new LogEventBroadcaster(port, logfile);
-        try {
-            broadcaster.run();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if (null != broadcaster) {
-                broadcaster.stop();
-            }
-        }
-    }
-
-    public void run()
-        throws Exception {
+    public LogEventBroadcaster(InetSocketAddress address, File file) {
         group = new NioEventLoopGroup();
         bootstrap = new Bootstrap();
         bootstrap.group(group).channel(NioDatagramChannel.class)
-            .option(ChannelOption.SO_BROADCAST, true)
-            .handler(new LogEventEncoder(address));
+                .option(ChannelOption.SO_BROADCAST, true)
+                .handler(new LogEventEncoder(address));
+        this.file = file;
+    }
 
-        Channel ch = bootstrap.bind(0).syncUninterruptibly().channel();
-        System.out.println("LogEventBroadcaster (" + file.getName() + ") running on port " +
-            address.getPort() + ".");
-        long pointer = file.length();
-
-        while (true) {
+    public void run() throws Exception {
+        Channel ch = bootstrap.bind(0).sync().channel();
+        long pointer = 0;
+        for (;;) {
             long len = file.length();
             if (len < pointer) {
                 // file was reset
@@ -74,7 +44,8 @@ public class LogEventBroadcaster {
                 raf.seek(pointer);
                 String line;
                 while ((line = raf.readLine()) != null) {
-                    ch.writeAndFlush(new LogEvent(null, -1, file.getAbsolutePath(), line));
+                    ch.writeAndFlush(new LogEvent(null, -1,
+                            file.getAbsolutePath(), line));
                 }
                 pointer = raf.getFilePointer();
                 raf.close();
@@ -89,8 +60,21 @@ public class LogEventBroadcaster {
     }
 
     public void stop() {
-        if (null != group) {
-            group.shutdown();
+        group.shutdownGracefully();
+    }
+
+    public static void main(String[] args) throws Exception {
+        if (args.length != 2) {
+            throw new IllegalArgumentException();
+        }
+        LogEventBroadcaster broadcaster = new LogEventBroadcaster(
+                new InetSocketAddress("255.255.255.255",
+                        Integer.parseInt(args[0])), new File(args[1]));
+        try {
+            broadcaster.run();
+        }
+        finally {
+            broadcaster.stop();
         }
     }
 }
