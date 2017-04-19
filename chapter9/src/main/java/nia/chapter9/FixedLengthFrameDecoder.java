@@ -7,7 +7,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * Listing 9.1 of <i>Netty in Action</i>
+ * Listing 9.1 FixedLengthFrameDecoder
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -24,7 +24,7 @@ public class FixedLengthFrameDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in,
-                          List<Object> out) throws Exception {
+        List<Object> out) throws Exception {
         while (in.readableBytes() >= frameLength) {
             ByteBuf buf = in.readBytes(frameLength);
             out.add(buf);

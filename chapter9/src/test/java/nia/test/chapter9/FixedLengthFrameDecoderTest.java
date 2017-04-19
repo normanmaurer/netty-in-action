@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Listing 9.2 of <i>Netty in Action</i>
+ * Listing 9.2 Testing the FixedLengthFrameDecoder
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -26,17 +26,20 @@ public class FixedLengthFrameDecoderTest {
         // write bytes
         assertTrue(channel.writeInbound(input.retain()));
         assertTrue(channel.finish());
-        // read messages
 
+        // read messages
         ByteBuf read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         assertNull(channel.readInbound());
         buf.release();
     }
@@ -48,20 +51,25 @@ public class FixedLengthFrameDecoderTest {
             buf.writeByte(i);
         }
         ByteBuf input = buf.duplicate();
+
         EmbeddedChannel channel = new EmbeddedChannel(
             new FixedLengthFrameDecoder(3));
         assertFalse(channel.writeInbound(input.readBytes(2)));
         assertTrue(channel.writeInbound(input.readBytes(7)));
+
         assertTrue(channel.finish());
         ByteBuf read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         read = (ByteBuf) channel.readInbound();
         assertEquals(buf.readSlice(3), read);
         read.release();
+
         assertNull(channel.readInbound());
         buf.release();
     }

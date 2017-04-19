@@ -10,6 +10,6 @@
     </parent>
 
     <artifactId>chapter9</artifactId>
-    <name>Chapter 9. Unit Testing</name>
-
+    <name>Chapter 9. Unit testing</name>
+    <description>Unit testing</description>
 </project>
