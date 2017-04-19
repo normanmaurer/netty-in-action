@@ -10,5 +10,5 @@
     </parent>
 
     <artifactId>chapter7</artifactId>
-    <name>Chapter 7. EventLoop and Threading Model</name>
+    <name>Chapter 7. EEventLoop and threading model</name>
 </project>
