@@ -7,16 +7,14 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * Listing 10.1  of <i>Netty in Action</i>
+ * Listing 10.1 Class ToIntegerDecoder extends ByteToMessageDecoder
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class ToIntegerDecoder
-    extends ByteToMessageDecoder {
-
+public class ToIntegerDecoder extends ByteToMessageDecoder {
     @Override
-    public void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)
-        throws Exception {
+    public void decode(ChannelHandlerContext ctx, ByteBuf in,
+        List<Object> out) throws Exception {
         if (in.readableBytes() >= 4) {
             out.add(in.readInt());
         }

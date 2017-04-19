@@ -10,5 +10,6 @@
     </parent>
 
     <artifactId>chapter10</artifactId>
-    <name>Chapter 10: Codecs</name>
+    <name>Chapter 10: The codec framework</name>
+    <description>An overview of decoders, encoders and codecs</description>
 </project>
