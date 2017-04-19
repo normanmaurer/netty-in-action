@@ -11,7 +11,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 2.2  of <i>Netty in Action</i>
+ * Listing 2.2 EchoServer class
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */

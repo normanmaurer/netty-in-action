@@ -8,7 +8,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
 /**
- * Listing 2.3 of <i>Netty in Action</i>
+ * Listing 2.3 ChannelHandler for the client
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
