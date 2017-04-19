@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.HttpResponseDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 
 /**
- * Listing 11.2 of <i>Netty in Action</i>
+ * Listing 11.2 Adding support for HTTP
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */

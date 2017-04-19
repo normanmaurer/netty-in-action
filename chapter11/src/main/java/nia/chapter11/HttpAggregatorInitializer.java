@@ -8,28 +8,24 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
 /**
- * Listing 11.3 of <i>Netty in Action</i>
+ * Listing 11.3 Automatically aggregating HTTP message fragments
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class HttpAggregatorInitializer
-    extends ChannelInitializer<Channel> {
-
-    private final boolean client;
-
-    public HttpAggregatorInitializer(boolean client) {
-        this.client = client;
+public class HttpAggregatorInitializer extends ChannelInitializer<Channel> {
+    private final boolean isClient;
+    public HttpAggregatorInitializer(boolean isClient) {
+        this.isClient = isClient;
     }
-
     @Override
-    protected void initChannel(Channel ch)
-        throws Exception {
+    protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        if (client) {
+        if (isClient) {
             pipeline.addLast("codec", new HttpClientCodec());
         } else {
             pipeline.addLast("codec", new HttpServerCodec());
         }
-        pipeline.addLast("aggegator", new HttpObjectAggregator(512 * 1024));
+        pipeline.addLast("aggregator",
+                new HttpObjectAggregator(512 * 1024));
     }
 }

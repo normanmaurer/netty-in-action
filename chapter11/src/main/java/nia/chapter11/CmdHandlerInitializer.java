@@ -5,24 +5,22 @@ import io.netty.channel.*;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 
 /**
- * Listing 11.9 of <i>Netty in Action</i>
+ * Listing 11.9 Using a ChannelInitializer as a decoder installer
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class CmdHandlerInitializer
-    extends ChannelInitializer<Channel> {
+public class CmdHandlerInitializer extends ChannelInitializer<Channel> {
+    private static final byte SPACE = (byte)' ';
 
     @Override
-    protected void initChannel(Channel ch)
-        throws Exception {
+    protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new CmdDecoder(65 * 1024));
+        pipeline.addLast(new CmdDecoder(64 * 1024));
         pipeline.addLast(new CmdHandler());
     }
 
     public static final class Cmd {
         private final ByteBuf name;
-
         private final ByteBuf args;
 
         public Cmd(ByteBuf name, ByteBuf args) {
@@ -39,21 +37,21 @@ public class CmdHandlerInitializer
         }
     }
 
-    public static final class CmdDecoder
-        extends LineBasedFrameDecoder {
+    public static final class CmdDecoder extends LineBasedFrameDecoder {
         public CmdDecoder(int maxLength) {
             super(maxLength);
         }
-
         @Override
         protected Object decode(ChannelHandlerContext ctx, ByteBuf buffer)
-            throws Exception {
+                throws Exception {
             ByteBuf frame = (ByteBuf) super.decode(ctx, buffer);
             if (frame == null) {
                 return null;
             }
-            int index = frame.indexOf(frame.readerIndex(), frame.writerIndex(), (byte) ' ');
-            return new Cmd(frame.slice(frame.readerIndex(), index), frame.slice(index + 1, frame.writerIndex()));
+            int index = frame.indexOf(frame.readerIndex(),
+                    frame.writerIndex(), SPACE);
+            return new Cmd(frame.slice(frame.readerIndex(), index),
+                    frame.slice(index + 1, frame.writerIndex()));
         }
     }
 

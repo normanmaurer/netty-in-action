@@ -1,6 +1,8 @@
 package nia.chapter11;
 
 import io.netty.channel.*;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslHandler;
 import io.netty.handler.stream.ChunkedStream;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
@@ -13,29 +15,28 @@ import java.io.FileInputStream;
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class ChunkedWriteHandlerInitializer
-    extends ChannelInitializer<Channel> {
+        extends ChannelInitializer<Channel> {
     private final File file;
-
-    public ChunkedWriteHandlerInitializer(File file) {
+    private final SslContext sslCtx;
+    public ChunkedWriteHandlerInitializer(File file, SslContext sslCtx) {
         this.file = file;
+        this.sslCtx = sslCtx;
     }
-
     @Override
-    protected void initChannel(Channel ch)
-        throws Exception {
+    protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
+        pipeline.addLast(new SslHandler(sslCtx.newEngine(ch.alloc())));
         pipeline.addLast(new ChunkedWriteHandler());
         pipeline.addLast(new WriteStreamHandler());
     }
-
     public final class WriteStreamHandler
-        extends ChannelInboundHandlerAdapter {
-
+            extends ChannelInboundHandlerAdapter {
         @Override
         public void channelActive(ChannelHandlerContext ctx)
-            throws Exception {
+                throws Exception {
             super.channelActive(ctx);
-            ctx.writeAndFlush(new ChunkedStream(new FileInputStream(file)));
+            ctx.writeAndFlush(
+                    new ChunkedStream(new FileInputStream(file)));
         }
     }
 }
