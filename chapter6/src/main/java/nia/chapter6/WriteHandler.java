@@ -5,7 +5,7 @@ import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
 /**
- * Listing 6.9 of <i>Netty in Action</i>
+ * Listing 6.9 Caching a ChannelHandlerContext
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */

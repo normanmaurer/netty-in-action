@@ -12,5 +12,7 @@
     <artifactId>chapter4</artifactId>
 
     <name>Chapter 4. Transports</name>
-    <description>OIO, NIO, Local and Embedded Transports</description>
+    <description>
+        OIO, NIO, Local and Embedded Transports
+    </description>
 </project>
