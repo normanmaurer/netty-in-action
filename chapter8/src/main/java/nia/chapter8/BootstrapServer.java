@@ -12,12 +12,16 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.4 of <i>Netty in Action</i>
+ * Listing 8.4 Bootstrapping a server
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
  */
 public class BootstrapServer {
+
+    /**
+     * Listing 8.4 Bootstrapping a server
+     * */
     public void bootstrap() {
         NioEventLoopGroup group = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
@@ -25,8 +29,8 @@ public class BootstrapServer {
             .channel(NioServerSocketChannel.class)
             .childHandler(new SimpleChannelInboundHandler<ByteBuf>() {
                 @Override
-                protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf)
-                    throws Exception {
+                protected void channelRead0(ChannelHandlerContext channelHandlerContext,
+                                            ByteBuf byteBuf) throws Exception {
                     System.out.println("Received data");
                     byteBuf.clear();
                 }

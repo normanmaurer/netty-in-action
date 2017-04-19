@@ -13,11 +13,15 @@ import io.netty.util.AttributeKey;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.7 of <i>Netty in Action</i>
+ * Listing 8.7 Using attributes
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class BootstrapClientWithOptionsAndAttrs {
+
+    /**
+     * Listing 8.7 Using attributes
+     * */
     public void bootstrap() {
         final AttributeKey<Integer> id = AttributeKey.newInstance("ID");
         Bootstrap bootstrap = new Bootstrap();

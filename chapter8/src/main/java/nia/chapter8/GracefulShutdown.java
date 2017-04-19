@@ -5,29 +5,31 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.concurrent.Future;
 
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.1 Bootstrapping a client
+ * Listing 8.9 Graceful shutdown
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
  */
-public class BootstrapClient {
+public class GracefulShutdown {
     public static void main(String args[]) {
-        BootstrapClient client = new BootstrapClient();
+        GracefulShutdown client = new GracefulShutdown();
         client.bootstrap();
     }
 
     /**
-     * Listing 8.1 Bootstrapping a client
-     * */
+     * Listing 8.9 Graceful shutdown
+     */
     public void bootstrap() {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
             .channel(NioSocketChannel.class)
+        //...
             .handler(
                 new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
@@ -38,20 +40,10 @@ public class BootstrapClient {
                     }
                 }
             );
-        ChannelFuture future =
-            bootstrap.connect(
-                    new InetSocketAddress("www.manning.com", 80));
-        future.addListener(new ChannelFutureListener() {
-            @Override
-            public void operationComplete(ChannelFuture channelFuture)
-                throws Exception {
-                if (channelFuture.isSuccess()) {
-                    System.out.println("Connection established");
-                } else {
-                    System.err.println("Connection attempt failed");
-                    channelFuture.cause().printStackTrace();
-                }
-            }
-        });
+        bootstrap.connect(new InetSocketAddress("www.manning.com", 80)).syncUninterruptibly();
+        //,,,
+        Future<?> future = group.shutdownGracefully();
+        // block until the group has shutdown
+        future.syncUninterruptibly();
     }
 }
