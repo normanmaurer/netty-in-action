@@ -1,8 +1,5 @@
 package nia.chapter7;
 
-import io.netty.channel.Channel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -12,8 +9,6 @@ import java.util.List;
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class EventLoopExamples {
-    private static final Channel CHANNEL_FROM_SOMEWHERE = new NioSocketChannel();
-
     /**
      * Listing 7.1 Executing tasks in an event loop
      * */

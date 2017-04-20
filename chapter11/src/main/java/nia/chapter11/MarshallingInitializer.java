@@ -33,11 +33,11 @@ public class MarshallingInitializer extends ChannelInitializer<Channel> {
     }
 
     public static final class ObjectHandler
-            extends SimpleChannelInboundHandler<Serializable> {
+        extends SimpleChannelInboundHandler<Serializable> {
         @Override
         public void channelRead0(
-                ChannelHandlerContext channelHandlerContext,
-                Serializable serializable) throws Exception {
+            ChannelHandlerContext channelHandlerContext,
+            Serializable serializable) throws Exception {
             // Do something
         }
     }

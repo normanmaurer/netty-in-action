@@ -14,9 +14,11 @@ import io.netty.handler.codec.http.HttpServerCodec;
  */
 public class HttpAggregatorInitializer extends ChannelInitializer<Channel> {
     private final boolean isClient;
+
     public HttpAggregatorInitializer(boolean isClient) {
         this.isClient = isClient;
     }
+
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();

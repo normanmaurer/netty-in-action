@@ -15,20 +15,22 @@ import io.netty.handler.codec.http.HttpServerCodec;
  */
 public class HttpCompressionInitializer extends ChannelInitializer<Channel> {
     private final boolean isClient;
+
     public HttpCompressionInitializer(boolean isClient) {
         this.isClient = isClient;
     }
+
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         if (isClient) {
             pipeline.addLast("codec", new HttpClientCodec());
             pipeline.addLast("decompressor",
-                    new HttpContentDecompressor());
+            new HttpContentDecompressor());
         } else {
             pipeline.addLast("codec", new HttpServerCodec());
             pipeline.addLast("compressor",
-                    new HttpContentCompressor());
+            new HttpContentCompressor());
         }
     }
 }

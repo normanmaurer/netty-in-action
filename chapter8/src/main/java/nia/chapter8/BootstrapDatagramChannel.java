@@ -25,26 +25,26 @@ public class BootstrapDatagramChannel {
     public void bootstrap() {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(new OioEventLoopGroup()).channel(
-                OioDatagramChannel.class).handler(
-                new SimpleChannelInboundHandler<DatagramPacket>() {
-                    @Override
-                    public void channelRead0(ChannelHandlerContext ctx,
-                        DatagramPacket msg) throws Exception {
-                        // Do something with the packet
-                    }
+            OioDatagramChannel.class).handler(
+            new SimpleChannelInboundHandler<DatagramPacket>() {
+                @Override
+                public void channelRead0(ChannelHandlerContext ctx,
+                    DatagramPacket msg) throws Exception {
+                    // Do something with the packet
                 }
+            }
         );
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(0));
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture)
-                    throws Exception {
-                if (channelFuture.isSuccess()) {
-                    System.out.println("Channel bound");
-                } else {
-                    System.err.println("Bind attempt failed");
-                    channelFuture.cause().printStackTrace();
-                }
+               throws Exception {
+               if (channelFuture.isSuccess()) {
+                   System.out.println("Channel bound");
+               } else {
+                   System.err.println("Bind attempt failed");
+                   channelFuture.cause().printStackTrace();
+               }
             }
         });
     }

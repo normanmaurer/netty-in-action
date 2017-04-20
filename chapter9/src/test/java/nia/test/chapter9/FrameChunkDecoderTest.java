@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.handler.codec.TooLongFrameException;
 import nia.chapter9.FrameChunkDecoder;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -30,7 +31,7 @@ public class FrameChunkDecoderTest {
         assertTrue(channel.writeInbound(input.readBytes(2)));
         try {
             channel.writeInbound(input.readBytes(4));
-            fail();
+            Assert.fail();
         } catch (TooLongFrameException e) {
             // expected exception
         }

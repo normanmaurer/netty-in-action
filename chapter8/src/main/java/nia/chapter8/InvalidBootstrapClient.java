@@ -31,14 +31,13 @@ public class InvalidBootstrapClient {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group).channel(OioSocketChannel.class)
             .handler(new SimpleChannelInboundHandler<ByteBuf>() {
-                         @Override
-                         protected void channelRead0(
-                                 ChannelHandlerContext channelHandlerContext,
-                                 ByteBuf byteBuf) throws Exception {
-                                 System.out.println("Received data");
-                         }
-                     }
-            );
+                @Override
+                protected void channelRead0(
+                    ChannelHandlerContext channelHandlerContext,
+                    ByteBuf byteBuf) throws Exception {
+                    System.out.println("Received data");
+                }
+             });
         ChannelFuture future = bootstrap.connect(
                 new InetSocketAddress("www.manning.com", 80));
         future.syncUninterruptibly();

@@ -5,7 +5,7 @@
  *
  * Listing 10.2 Class ToIntegerDecoder2 extends ReplayingDecoder {@link nia.chapter10.ToIntegerDecoder2}
  *
- * Listing 10.3 Class IntegerToStringDecoder {@link nia.chapter10.IntegerToStringEncoder}
+ * Listing 10.3 Class IntegerToStringDecoder {@link nia.chapter10.IntegerToStringDecoder}
  *
  * Listing 10.4 TooLongFrameException {@link nia.chapter10.SafeByteToMessageDecoder}
  *

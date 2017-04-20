@@ -15,7 +15,6 @@ import java.util.List;
 
 public class SafeByteToMessageDecoder extends ByteToMessageDecoder {
     private static final int MAX_FRAME_SIZE = 1024;
-
     @Override
     public void decode(ChannelHandlerContext ctx, ByteBuf in,
         List<Object> out) throws Exception {

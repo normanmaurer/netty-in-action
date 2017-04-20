@@ -17,8 +17,7 @@ import java.nio.charset.Charset;
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class NettyNioServer {
-    public void server(int port)
-            throws Exception {
+    public void server(int port) throws Exception {
         final ByteBuf buf =
                 Unpooled.unreleasableBuffer(Unpooled.copiedBuffer("Hi!\r\n",
                         Charset.forName("UTF-8")));
@@ -37,7 +36,8 @@ public class NettyNioServer {
                                                       public void channelActive(
                                                               ChannelHandlerContext ctx) throws Exception {
                                                                 ctx.writeAndFlush(buf.duplicate())
-                                                                  .addListener(ChannelFutureListener.CLOSE);
+                                                                  .addListener(
+                                                                          ChannelFutureListener.CLOSE);
                                                       }
                                                   });
                                       }

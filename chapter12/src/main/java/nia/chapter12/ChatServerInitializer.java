@@ -14,8 +14,7 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class ChatServerInitializer
-    extends ChannelInitializer<Channel> {
+public class ChatServerInitializer extends ChannelInitializer<Channel> {
     private final ChannelGroup group;
 
     public ChatServerInitializer(ChannelGroup group) {

@@ -38,7 +38,7 @@ public class WriteHandlers {
      * */
     public static void writeViaChannelPipeline() {
         ChannelHandlerContext ctx = CHANNEL_HANDLER_CONTEXT_FROM_SOMEWHERE; //get reference form somewhere
-        ChannelPipeline pipeline = CHANNEL_PIPELINE_FROM_SOMEWHERE; //get reference form somewhere
+        ChannelPipeline pipeline = ctx.pipeline(); //get reference form somewhere
         pipeline.write(Unpooled.copiedBuffer("Netty in Action",
                 CharsetUtil.UTF_8));
 

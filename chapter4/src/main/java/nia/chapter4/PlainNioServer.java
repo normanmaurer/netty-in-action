@@ -34,7 +34,6 @@ public class PlainNioServer {
                 //handle exception
                 break;
             }
-
             Set<SelectionKey> readyKeys = selector.selectedKeys();
             Iterator<SelectionKey> iterator = readyKeys.iterator();
             while (iterator.hasNext()) {

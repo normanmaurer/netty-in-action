@@ -9,7 +9,7 @@
  *
  * Listing 6.4 Discarding and releasing outbound data {@link nia.chapter6.DiscardOutboundHandler}
  *
- * Listing 6.5 Modify the ChannelPipeline {@link nia.chapter6.ModifyChannelPipeline}
+ * Listing 6.5 Modify the ChannelPipeline {@link nia.chapter6.ModifyChannelPipeline#modifyPipeline()}
  *
  * Listing 6.6 Accessing the Channel from a ChannelHandlerContext {@link nia.chapter6.WriteHandlers#writeViaChannel()}
  *

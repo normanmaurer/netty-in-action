@@ -1,9 +1,6 @@
 package nia.chapter5;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.CompositeByteBuf;
-import io.netty.buffer.Unpooled;
+import io.netty.buffer.*;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -34,7 +31,7 @@ import static io.netty.channel.DummyChannelHandlerContext.DUMMY_INSTANCE;
  *
  * Listing 5.8 Write data
  *
- * Listing 5.9 Using ByteProcessor to find \r
+ * Listing 5.9 Using ByteBufProcessor to find \r
  *
  * Listing 5.10 Slice a ByteBuf
  *
@@ -86,7 +83,7 @@ public class ByteBufExamples {
      */
     public static void byteBufferComposite(ByteBuffer header, ByteBuffer body) {
         // Use an array to hold the message parts
-        ByteBuffer[] message = { header, body };
+        ByteBuffer[] message =  new ByteBuffer[]{ header, body };
 
         // Create a new ByteBuffer and use copy to merge the header and body
         ByteBuffer message2 =
@@ -102,7 +99,6 @@ public class ByteBufExamples {
      */
     public static void byteBufComposite() {
         CompositeByteBuf messageBuf = Unpooled.compositeBuffer();
-
         ByteBuf headerBuf = BYTE_BUF_FROM_SOMEWHERE; // can be backing or direct
         ByteBuf bodyBuf = BYTE_BUF_FROM_SOMEWHERE;   // can be backing or direct
         messageBuf.addComponents(headerBuf, bodyBuf);
@@ -128,7 +124,7 @@ public class ByteBufExamples {
      * Listing 5.6 Access data
      */
     public static void byteBufRelativeAccess() {
-        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE;
+        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
         for (int i = 0; i < buffer.capacity(); i++) {
             byte b = buffer.getByte(i);
             System.out.println((char) b);
@@ -139,7 +135,7 @@ public class ByteBufExamples {
      * Listing 5.7 Read all data
      */
     public static void readAllData() {
-        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE;
+        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
         while (buffer.isReadable()) {
             System.out.println(buffer.readByte());
         }
@@ -150,7 +146,7 @@ public class ByteBufExamples {
      */
     public static void write() {
         // Fills the writable bytes of a buffer with random integers.
-        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE;
+        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
         while (buffer.writableBytes() >= 4) {
             buffer.writeInt(random.nextInt());
         }
@@ -162,8 +158,18 @@ public class ByteBufExamples {
      * use {@link io.netty.buffer.ByteBufProcessor in Netty 4.0.x}
      */
     public static void byteProcessor() {
-        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE;
+        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
         int index = buffer.forEachByte(ByteProcessor.FIND_CR);
+    }
+
+    /**
+     * Listing 5.9 Using ByteBufProcessor to find \r
+     *
+     * use {@link io.netty.util.ByteProcessor in Netty 4.1.x}
+     */
+    public static void byteBufProcessor() {
+        ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
+        int index = buffer.forEachByte(ByteBufProcessor.FIND_CR);
     }
 
     /**

@@ -28,9 +28,9 @@ public class GracefulShutdown {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
-            .channel(NioSocketChannel.class)
+             .channel(NioSocketChannel.class)
         //...
-            .handler(
+             .handler(
                 new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
                     protected void channelRead0(
@@ -39,7 +39,7 @@ public class GracefulShutdown {
                         System.out.println("Received data");
                     }
                 }
-            );
+             );
         bootstrap.connect(new InetSocketAddress("www.manning.com", 80)).syncUninterruptibly();
         //,,,
         Future<?> future = group.shutdownGracefully();

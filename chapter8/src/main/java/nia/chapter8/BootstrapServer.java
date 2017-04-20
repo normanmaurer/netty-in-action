@@ -30,9 +30,8 @@ public class BootstrapServer {
             .childHandler(new SimpleChannelInboundHandler<ByteBuf>() {
                 @Override
                 protected void channelRead0(ChannelHandlerContext channelHandlerContext,
-                                            ByteBuf byteBuf) throws Exception {
+                    ByteBuf byteBuf) throws Exception {
                     System.out.println("Received data");
-                    byteBuf.clear();
                 }
             });
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(8080));

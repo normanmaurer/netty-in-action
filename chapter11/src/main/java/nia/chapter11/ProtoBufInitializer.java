@@ -28,10 +28,10 @@ public class ProtoBufInitializer extends ChannelInitializer<Channel> {
     }
 
     public static final class ObjectHandler
-            extends SimpleChannelInboundHandler<Object> {
+        extends SimpleChannelInboundHandler<Object> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx, Object msg)
-                throws Exception {
+            throws Exception {
             // Do something with the object
         }
     }
