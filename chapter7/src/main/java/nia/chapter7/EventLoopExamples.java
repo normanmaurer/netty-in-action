@@ -1,47 +1,43 @@
-package nia.chapter15;
+package nia.chapter7;
 
 import io.netty.channel.Channel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 
-import java.util.concurrent.Future;
+import java.util.Collections;
+import java.util.List;
 
 /**
+ * Listing 7.1 Executing tasks in an event loop
+ *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class EventLoopExamples {
+    private static final Channel CHANNEL_FROM_SOMEWHERE = new NioSocketChannel();
+
+    /**
+     * Listing 7.1 Executing tasks in an event loop
+     * */
     public static void executeTaskInEventLoop() {
-        Channel channel = null; // get reference to channel
-        channel.eventLoop().execute(
-            new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("Run in the EventLoop");
-                }
-            });
-    }
-
-    public static void executeTaskInEventLoopAndCheck() {
-        Channel channel = null; // get reference to channel
-        Future<?> future = channel.eventLoop().submit(
-            new Runnable() {
-                @Override
-                public void run() {
-                    // Do something
-                }
-            });
-        // ...
-        if (future.isDone()) {
-            System.out.println("Task complete");
-        } else {
-            System.out.println("Task not complete yet");
+        boolean terminated = true;
+        //...
+        while (!terminated) {
+            List<Runnable> readyEvents = blockUntilEventsReady();
+            for (Runnable ev: readyEvents) {
+                ev.run();
+            }
         }
     }
 
-    public static void checkIfInEventLoop() {
-        Channel channel = null; // get reference to channel
-        if (channel.eventLoop().inEventLoop()) {
-            System.out.println("In the EventLoop");
-        } else {
-            System.out.println("Outside the EventLoop");
-        }
+    private static final List<Runnable> blockUntilEventsReady() {
+        return Collections.<Runnable>singletonList(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

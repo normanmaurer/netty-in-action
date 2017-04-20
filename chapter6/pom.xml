@@ -10,5 +10,10 @@
     </parent>
 
     <artifactId>chapter6</artifactId>
-    <name>Chapter 6. Channel Handler and Channel Pipeline</name>
+    <name>
+        Chapter 6. ChannelHandler and ChannelPipeline
+    </name>
+    <description>
+        The ChannelHandler and ChannelPipeline APIs
+    </description>
 </project>

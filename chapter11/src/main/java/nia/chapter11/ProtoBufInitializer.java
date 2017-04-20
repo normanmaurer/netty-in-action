@@ -7,13 +7,11 @@ import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 
 /**
- * Listing 11.14 of <i>Netty in Action</i>
+ * Listing 11.14 Using protobuf
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class ProtoBufInitializer
-    extends ChannelInitializer<Channel> {
-
+public class ProtoBufInitializer extends ChannelInitializer<Channel> {
     private final MessageLite lite;
 
     public ProtoBufInitializer(MessageLite lite) {
@@ -21,8 +19,7 @@ public class ProtoBufInitializer
     }
 
     @Override
-    protected void initChannel(Channel ch)
-        throws Exception {
+    protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
         pipeline.addLast(new ProtobufEncoder());
@@ -31,10 +28,10 @@ public class ProtoBufInitializer
     }
 
     public static final class ObjectHandler
-        extends SimpleChannelInboundHandler<Object> {
+            extends SimpleChannelInboundHandler<Object> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx, Object msg)
-            throws Exception {
+                throws Exception {
             // Do something with the object
         }
     }

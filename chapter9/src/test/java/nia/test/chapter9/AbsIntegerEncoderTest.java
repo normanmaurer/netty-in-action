@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Listing 9.4 of <i>Netty in Action</i>
+ * Listing 9.4 Testing the AbsIntegerEncoder
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -20,10 +20,12 @@ public class AbsIntegerEncoderTest {
         for (int i = 1; i < 10; i++) {
             buf.writeInt(i * -1);
         }
+
         EmbeddedChannel channel = new EmbeddedChannel(
             new AbsIntegerEncoder());
         assertTrue(channel.writeOutbound(buf));
         assertTrue(channel.finish());
+
         // read bytes
         for (int i = 1; i < 10; i++) {
             assertEquals(i, channel.readOutbound());

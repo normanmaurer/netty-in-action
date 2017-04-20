@@ -12,7 +12,7 @@ import io.netty.channel.socket.oio.OioSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.3 of <i>Netty in Action</i>
+ * Listing 8.3 Incompatible Channel and EventLoopGroup
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -23,20 +23,24 @@ public class InvalidBootstrapClient {
         client.bootstrap();
     }
 
+    /**
+     * Listing 8.3 Incompatible Channel and EventLoopGroup
+     * */
     public void bootstrap() {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group).channel(OioSocketChannel.class)
             .handler(new SimpleChannelInboundHandler<ByteBuf>() {
                          @Override
-                         protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf)
-                             throws Exception {
-                             System.out.println("Received data");
-                             byteBuf.clear();
+                         protected void channelRead0(
+                                 ChannelHandlerContext channelHandlerContext,
+                                 ByteBuf byteBuf) throws Exception {
+                                 System.out.println("Received data");
                          }
                      }
             );
-        ChannelFuture future = bootstrap.connect(new InetSocketAddress("www.manning.com", 80));
+        ChannelFuture future = bootstrap.connect(
+                new InetSocketAddress("www.manning.com", 80));
         future.syncUninterruptibly();
     }
 }

@@ -1,16 +1,16 @@
 package nia.chapter6;
 
-import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 
 /**
- * Listing 6.1 of <i>Netty in Action</i>
+ * Listing 6.1 Releasing message resources
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-@ChannelHandler.Sharable
+@Sharable
 public class DiscardHandler extends ChannelInboundHandlerAdapter {
 
     @Override

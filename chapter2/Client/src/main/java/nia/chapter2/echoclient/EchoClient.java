@@ -11,7 +11,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 2.4  of <i>Netty in Action</i>
+ * Listing 2.4 Main class for the client
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -51,7 +51,8 @@ public class EchoClient {
                     @Override
                     public void initChannel(SocketChannel ch)
                         throws Exception {
-                        ch.pipeline().addLast(new EchoClientHandler());
+                        ch.pipeline().addLast(
+                                new EchoClientHandler());
                     }
                 });
 

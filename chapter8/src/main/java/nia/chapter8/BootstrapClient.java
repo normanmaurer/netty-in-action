@@ -9,7 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.1 of <i>Netty in Action</i>
+ * Listing 8.1 Bootstrapping a client
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
@@ -20,6 +20,9 @@ public class BootstrapClient {
         client.bootstrap();
     }
 
+    /**
+     * Listing 8.1 Bootstrapping a client
+     * */
     public void bootstrap() {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
@@ -28,15 +31,16 @@ public class BootstrapClient {
             .handler(
                 new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
-                    protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf)
-                        throws Exception {
+                    protected void channelRead0(
+                            ChannelHandlerContext channelHandlerContext,
+                            ByteBuf byteBuf) throws Exception {
                         System.out.println("Received data");
-                        byteBuf.clear();
                     }
                 }
             );
         ChannelFuture future =
-            bootstrap.connect(new InetSocketAddress("www.manning.com", 80));
+            bootstrap.connect(
+                    new InetSocketAddress("www.manning.com", 80));
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture)

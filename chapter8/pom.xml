@@ -11,5 +11,5 @@
 
     <artifactId>chapter8</artifactId>
     <name>Chapter 8. Bootstrapping</name>
-
+    <description>Bootstrapping clients and servers</description>
 </project>

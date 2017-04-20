@@ -12,28 +12,33 @@ import io.netty.channel.socket.oio.OioDatagramChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.8 of <i>Netty in Action</i>
+ * Listing 8.8 Using Bootstrap with DatagramChannel
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
  */
 public class BootstrapDatagramChannel {
+
+    /**
+     * Listing 8.8 Using Bootstrap with DatagramChannel
+     */
     public void bootstrap() {
         Bootstrap bootstrap = new Bootstrap();
-        bootstrap.group(new OioEventLoopGroup()).channel(OioDatagramChannel.class).handler(
-            new SimpleChannelInboundHandler<DatagramPacket>() {
-                @Override
-                public void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg)
-                    throws Exception {
-                    // Do something with the packet
+        bootstrap.group(new OioEventLoopGroup()).channel(
+                OioDatagramChannel.class).handler(
+                new SimpleChannelInboundHandler<DatagramPacket>() {
+                    @Override
+                    public void channelRead0(ChannelHandlerContext ctx,
+                        DatagramPacket msg) throws Exception {
+                        // Do something with the packet
+                    }
                 }
-            }
         );
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(0));
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture)
-                throws Exception {
+                    throws Exception {
                 if (channelFuture.isSuccess()) {
                     System.out.println("Channel bound");
                 } else {

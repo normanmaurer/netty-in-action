@@ -11,19 +11,19 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * Listings 4.5 and 4.6  of <i>Netty in Action</i>
+ * Listing 4.5 Writing to a Channel
+ * Listing 4.6 Using a Channel from many threads
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class ChannelOperationExamples {
     /**
-     * Listing 4.5
+     * Listing 4.5 Writing to a Channel
      */
     public static void writingToChannel() {
         Channel channel = null; // Get the channel reference from somewhere
         ByteBuf buf = Unpooled.copiedBuffer("your data", CharsetUtil.UTF_8);
-        ChannelFuture cf = channel.write(buf);
-
+        ChannelFuture cf = channel.writeAndFlush(buf);
         cf.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) {
@@ -38,11 +38,12 @@ public class ChannelOperationExamples {
     }
 
     /**
-     * Listing 4.6
+     * Listing 4.6 Using a Channel from many threads
      */
-    public static void writingToChannelManyThreads() {
+    public static void writingToChannelFromManyThreads() {
         final Channel channel = null; // Get the channel reference from somewhere
-        final ByteBuf buf = Unpooled.copiedBuffer("your data", CharsetUtil.UTF_8);
+        final ByteBuf buf = Unpooled.copiedBuffer("your data",
+                CharsetUtil.UTF_8);
         Runnable writer = new Runnable() {
             @Override
             public void run() {

@@ -3,7 +3,7 @@ package nia.chapter6;
 import io.netty.channel.*;
 
 /**
- * Listing 6.14 of <i>Netty in Action</i>
+ * Listing 6.14 Adding a ChannelFutureListener to a ChannelPromise
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -11,7 +11,7 @@ import io.netty.channel.*;
 public class OutboundExceptionHandler extends ChannelOutboundHandlerAdapter {
     @Override
     public void write(ChannelHandlerContext ctx, Object msg,
-                      ChannelPromise promise) {
+        ChannelPromise promise) {
         promise.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture f) {

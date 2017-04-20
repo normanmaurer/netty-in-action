@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Listing 4.2  of <i>Netty in Action</i>
+ * Listing 4.2 Asynchronous networking without Netty
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -26,11 +26,12 @@ public class PlainNioServer {
         Selector selector = Selector.open();
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
         final ByteBuffer msg = ByteBuffer.wrap("Hi!\r\n".getBytes());
-        while (true) {
+        for (;;){
             try {
                 selector.select();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                //handle exception
                 break;
             }
 
@@ -41,15 +42,20 @@ public class PlainNioServer {
                 iterator.remove();
                 try {
                     if (key.isAcceptable()) {
-                        ServerSocketChannel server = (ServerSocketChannel) key.channel();
+                        ServerSocketChannel server =
+                                (ServerSocketChannel) key.channel();
                         SocketChannel client = server.accept();
                         client.configureBlocking(false);
-                        client.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ, msg.duplicate());
-                        System.out.println("Accepted connection from " + client);
+                        client.register(selector, SelectionKey.OP_WRITE |
+                                SelectionKey.OP_READ, msg.duplicate());
+                        System.out.println(
+                                "Accepted connection from " + client);
                     }
                     if (key.isWritable()) {
-                        SocketChannel client = (SocketChannel) key.channel();
-                        ByteBuffer buffer = (ByteBuffer) key.attachment();
+                        SocketChannel client =
+                                (SocketChannel) key.channel();
+                        ByteBuffer buffer =
+                                (ByteBuffer) key.attachment();
                         while (buffer.hasRemaining()) {
                             if (client.write(buffer) == 0) {
                                 break;
@@ -62,6 +68,7 @@ public class PlainNioServer {
                     try {
                         key.channel().close();
                     } catch (IOException cex) {
+                        // ignore on close
                     }
                 }
             }
