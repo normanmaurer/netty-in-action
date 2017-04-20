@@ -15,8 +15,9 @@ import javax.net.ssl.SSLEngine;
 public class SslChannelInitializer extends ChannelInitializer<Channel> {
     private final SslContext context;
     private final boolean startTls;
+
     public SslChannelInitializer(SslContext context,
-                                 boolean startTls) {
+        boolean startTls) {
         this.context = context;
         this.startTls = startTls;
     }
@@ -24,6 +25,6 @@ public class SslChannelInitializer extends ChannelInitializer<Channel> {
     protected void initChannel(Channel ch) throws Exception {
         SSLEngine engine = context.newEngine(ch.alloc());
         ch.pipeline().addFirst("ssl",
-                new SslHandler(engine, startTls));
+            new SslHandler(engine, startTls));
     }
 }

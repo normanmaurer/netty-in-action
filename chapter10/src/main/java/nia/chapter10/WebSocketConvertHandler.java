@@ -15,36 +15,35 @@ import java.util.List;
  */
 @Sharable
 public class WebSocketConvertHandler extends
-        MessageToMessageCodec<WebSocketFrame,
-        WebSocketConvertHandler.MyWebSocketFrame> {
-        @Override
-        protected void encode(ChannelHandlerContext ctx,
-            WebSocketConvertHandler.MyWebSocketFrame msg,
-            List<Object> out) throws Exception {
-            ByteBuf payload = msg.getData().duplicate().retain();
-            switch (msg.getType()) {
-                case BINARY:
-                    out.add(new BinaryWebSocketFrame(payload));
-                    break;
-                case TEXT:
-                    out.add(new TextWebSocketFrame(payload));
-                    break;
-                case CLOSE:
-                    out.add(new CloseWebSocketFrame(true, 0, payload));
-                    break;
-                case CONTINUATION:
-                    out.add(new ContinuationWebSocketFrame(payload));
-                    break;
-                case PONG:
-                    out.add(new PongWebSocketFrame(payload));
-                    break;
-                case PING:
-                    out.add(new PingWebSocketFrame(payload));
-                    break;
-                default:
-                    throw new IllegalStateException(
-                        "Unsupported websocket msg " + msg);
-        }
+     MessageToMessageCodec<WebSocketFrame,
+     WebSocketConvertHandler.MyWebSocketFrame> {
+     @Override
+     protected void encode(ChannelHandlerContext ctx,
+         WebSocketConvertHandler.MyWebSocketFrame msg,
+         List<Object> out) throws Exception {
+         ByteBuf payload = msg.getData().duplicate().retain();
+         switch (msg.getType()) {
+             case BINARY:
+                 out.add(new BinaryWebSocketFrame(payload));
+                 break;
+             case TEXT:
+                 out.add(new TextWebSocketFrame(payload));
+                 break;
+             case CLOSE:
+                 out.add(new CloseWebSocketFrame(true, 0, payload));
+                 break;
+             case CONTINUATION:
+                 out.add(new ContinuationWebSocketFrame(payload));
+                 break;
+             case PONG:
+                 out.add(new PongWebSocketFrame(payload));
+                 break;
+             case PING:
+                 out.add(new PingWebSocketFrame(payload));
+                 break;
+             default:
+                 throw new IllegalStateException(
+                     "Unsupported websocket msg " + msg);}
     }
 
     @Override

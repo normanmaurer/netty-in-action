@@ -15,7 +15,7 @@
  *
  * Listing 11.7 Sending heartbeats {@link nia.chapter11.IdleStateHandlerInitializer}
  *
- * Listing 11.8 Handling line-delimited frames {@link nia.chapter11.LengthBasedInitializer}
+ * Listing 11.8 Handling line-delimited frames {@link nia.chapter11.LineBasedHandlerInitializer}
  *
  * Listing 11.9 Using a ChannelInitializer as a decoder installer {@link nia.chapter11.CmdHandlerInitializer}
  *

@@ -29,15 +29,13 @@ public class ScheduleExamples {
         ScheduledExecutorService executor =
                 Executors.newScheduledThreadPool(10);
 
-        ScheduledFuture<?> future =
-            executor.schedule(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("Now it is 60 seconds later");
-                    }
-                }, 60, TimeUnit.SECONDS
-            );
+        ScheduledFuture<?> future = executor.schedule(
+            new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Now it is 60 seconds later");
+            }
+        }, 60, TimeUnit.SECONDS);
         //...
         executor.shutdown();
     }
@@ -48,12 +46,12 @@ public class ScheduleExamples {
     public static void scheduleViaEventLoop() {
         Channel ch = CHANNEL_FROM_SOMEWHERE; // get reference from somewhere
         ScheduledFuture<?> future = ch.eventLoop().schedule(
-                new Runnable() {
-                 @Override
-                 public void run() {
-                     System.out.println("60 seconds later");
-                    }
-                }, 60, TimeUnit.SECONDS);
+            new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("60 seconds later");
+            }
+        }, 60, TimeUnit.SECONDS);
     }
 
     /**
@@ -62,12 +60,12 @@ public class ScheduleExamples {
     public static void scheduleFixedViaEventLoop() {
         Channel ch = CHANNEL_FROM_SOMEWHERE; // get reference from somewhere
         ScheduledFuture<?> future = ch.eventLoop().scheduleAtFixedRate(
-                new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("Run every 60 seconds");
-                    }
-                }, 60, 60, TimeUnit.SECONDS);
+           new Runnable() {
+           @Override
+           public void run() {
+               System.out.println("Run every 60 seconds");
+               }
+           }, 60, 60, TimeUnit.SECONDS);
     }
 
     /**

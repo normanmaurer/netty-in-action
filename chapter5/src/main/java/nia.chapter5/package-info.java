@@ -17,7 +17,7 @@
  *
  * Listing 5.8 Write data {@link nia.chapter5.ByteBufExamples#write()}
  *
- * Listing 5.9 Using ByteProcessor to find \r {@link nia.chapter5.ByteBufExamples#byteProcessor()}
+ * Listing 5.9 Using ByteBufProcessor to find \r {@link nia.chapter5.ByteBufExamples#byteBufProcessor()}
  *
  * Listing 5.10 Slice a ByteBuf {@link nia.chapter5.ByteBufExamples#byteBufSlice()}
  *

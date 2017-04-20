@@ -13,6 +13,9 @@ import static io.netty.channel.DummyChannelPipeline.DUMMY_INSTANCE;
 public class ModifyChannelPipeline {
     private static final ChannelPipeline CHANNEL_PIPELINE_FROM_SOMEWHERE = DUMMY_INSTANCE;
 
+    /**
+     * Listing 6.5 Modify the ChannelPipeline
+     * */
     public static void modifyPipeline() {
         ChannelPipeline pipeline = CHANNEL_PIPELINE_FROM_SOMEWHERE; // get reference to pipeline;
         FirstHandler firstHandler = new FirstHandler();

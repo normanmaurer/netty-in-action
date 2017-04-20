@@ -7,7 +7,7 @@
  *
  * Listing 8.4 Bootstrapping a server{@link nia.chapter8.BootstrapServer#bootstrap()}
  *
- * Listing 8.5 Bootstrapping a server {@link nia.chapter8.BootstrapSharingEventLoopGroup}
+ * Listing 8.5 Bootstrapping a server {@link nia.chapter8.BootstrapSharingEventLoopGroup#bootstrap()}
  *
  * Listing 8.6 Bootstrapping and using ChannelInitializer {@link nia.chapter8.BootstrapWithInitializer#bootstrap()}
  *

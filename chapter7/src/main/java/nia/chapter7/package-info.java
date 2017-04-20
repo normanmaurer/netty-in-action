@@ -1,7 +1,7 @@
 /**
  * Created by kerr.
  *
- * Listing 7.1 Executing tasks in an event loop {@link nia.chapter7.EventLoopExamples#blockUntilEventsReady()}
+ * Listing 7.1 Executing tasks in an event loop {@link nia.chapter7.EventLoopExamples#executeTaskInEventLoop()}
  *
  * Listing 7.2 Scheduling a task with a ScheduledExecutorService {@link nia.chapter7.ScheduleExamples#schedule()}
  *

@@ -11,7 +11,6 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
  */
 public class CmdHandlerInitializer extends ChannelInitializer<Channel> {
     private static final byte SPACE = (byte)' ';
-
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
@@ -41,9 +40,10 @@ public class CmdHandlerInitializer extends ChannelInitializer<Channel> {
         public CmdDecoder(int maxLength) {
             super(maxLength);
         }
+
         @Override
         protected Object decode(ChannelHandlerContext ctx, ByteBuf buffer)
-                throws Exception {
+            throws Exception {
             ByteBuf frame = (ByteBuf) super.decode(ctx, buffer);
             if (frame == null) {
                 return null;

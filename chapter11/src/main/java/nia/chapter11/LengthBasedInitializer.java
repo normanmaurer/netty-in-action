@@ -17,11 +17,12 @@ public class LengthBasedInitializer extends ChannelInitializer<Channel> {
                 new LengthFieldBasedFrameDecoder(64 * 1024, 0, 8));
         pipeline.addLast(new FrameHandler());
     }
+
     public static final class FrameHandler
-            extends SimpleChannelInboundHandler<ByteBuf> {
+        extends SimpleChannelInboundHandler<ByteBuf> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx,
-                                 ByteBuf msg) throws Exception {
+             ByteBuf msg) throws Exception {
             // Do something with the frame
         }
     }

@@ -13,6 +13,10 @@ import java.net.Socket;
  * Listing 1.1 Blocking I/O example
  */
 public class BlockingIoExample {
+
+    /**
+     * Listing 1.1 Blocking I/O example
+     * */
     public void serve(int portNumber) throws IOException {
         ServerSocket serverSocket = new ServerSocket(portNumber);
         Socket clientSocket = serverSocket.accept();

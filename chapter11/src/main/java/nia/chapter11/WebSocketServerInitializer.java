@@ -20,37 +20,37 @@ public class WebSocketServerInitializer extends ChannelInitializer<Channel> {
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ch.pipeline().addLast(
-                new HttpServerCodec(),
-                new HttpObjectAggregator(65536),
-                new WebSocketServerProtocolHandler("/websocket"),
-                new TextFrameHandler(),
-                new BinaryFrameHandler(),
-                new ContinuationFrameHandler());
+            new HttpServerCodec(),
+            new HttpObjectAggregator(65536),
+            new WebSocketServerProtocolHandler("/websocket"),
+            new TextFrameHandler(),
+            new BinaryFrameHandler(),
+            new ContinuationFrameHandler());
     }
 
     public static final class TextFrameHandler extends
-            SimpleChannelInboundHandler<TextWebSocketFrame> {
+        SimpleChannelInboundHandler<TextWebSocketFrame> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx,
-                                 TextWebSocketFrame msg) throws Exception {
+            TextWebSocketFrame msg) throws Exception {
             // Handle text frame
         }
     }
 
     public static final class BinaryFrameHandler extends
-            SimpleChannelInboundHandler<BinaryWebSocketFrame> {
+        SimpleChannelInboundHandler<BinaryWebSocketFrame> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx,
-                                 BinaryWebSocketFrame msg) throws Exception {
+            BinaryWebSocketFrame msg) throws Exception {
             // Handle binary frame
         }
     }
 
     public static final class ContinuationFrameHandler extends
-            SimpleChannelInboundHandler<ContinuationWebSocketFrame> {
+        SimpleChannelInboundHandler<ContinuationWebSocketFrame> {
         @Override
         public void channelRead0(ChannelHandlerContext ctx,
-                                 ContinuationWebSocketFrame msg) throws Exception {
+            ContinuationWebSocketFrame msg) throws Exception {
             // Handle continuation frame
         }
     }

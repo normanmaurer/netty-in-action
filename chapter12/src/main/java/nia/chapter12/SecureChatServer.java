@@ -10,20 +10,23 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 12.7 of <i>Netty in Action</i>
+ * Listing 12.7 Adding encryption to the ChatServer
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 public class SecureChatServer extends ChatServer {
     private final SslContext context;
+
     public SecureChatServer(SslContext context) {
         this.context = context;
     }
+
     @Override
     protected ChannelInitializer<Channel> createInitializer(
-            ChannelGroup group) {
+        ChannelGroup group) {
         return new SecureChatServerInitializer(group, context);
     }
+
     public static void main(String[] args) throws Exception {
         if (args.length != 1) {
             System.err.println("Please give port as argument");

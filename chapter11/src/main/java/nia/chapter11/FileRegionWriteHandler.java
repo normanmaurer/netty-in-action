@@ -17,22 +17,22 @@ public class FileRegionWriteHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-        File file = FILE_FROM_SOMEWHERE;
-        Channel channel = CHANNEL_FROM_SOMEWHERE;
+        File file = FILE_FROM_SOMEWHERE; //get reference from somewhere
+        Channel channel = CHANNEL_FROM_SOMEWHERE; //get reference from somewhere
         //...
         FileInputStream in = new FileInputStream(file);
         FileRegion region = new DefaultFileRegion(
                 in.getChannel(), 0, file.length());
         channel.writeAndFlush(region).addListener(
-                new ChannelFutureListener() {
-                    @Override
-                    public void operationComplete(ChannelFuture future)
-                            throws Exception {
-                        if (!future.isSuccess()) {
-                            Throwable cause = future.cause();
-                            // Do something
-                        }
-                    }
-                });
+            new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future)
+               throws Exception {
+               if (!future.isSuccess()) {
+                   Throwable cause = future.cause();
+                   // Do something
+               }
+            }
+        });
     }
 }
