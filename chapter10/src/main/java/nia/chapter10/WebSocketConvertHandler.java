@@ -49,7 +49,7 @@ public class WebSocketConvertHandler extends
 
     @Override
     protected void decode(ChannelHandlerContext ctx, WebSocketFrame msg,
-                          List<Object> out) throws Exception {
+        List<Object> out) throws Exception {
         ByteBuf payload = msg.content().duplicate().retain();
         if (msg instanceof BinaryWebSocketFrame) {
             out.add(new MyWebSocketFrame(

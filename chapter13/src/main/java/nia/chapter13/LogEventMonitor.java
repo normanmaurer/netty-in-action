@@ -34,8 +34,8 @@ public class LogEventMonitor {
                 .localAddress(address);
     }
 
-    public Channel bind() throws InterruptedException {
-        return bootstrap.bind().sync().channel();
+    public Channel bind() {
+        return bootstrap.bind().syncUninterruptibly().channel();
     }
 
     public void stop() {
