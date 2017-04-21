@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.websocketx.*;
 import java.util.List;
 
 /**
- * Listing 10.7 Using MessageToMessageCodec
+ * 代码清单 10-7 使用 MessageToMessageCodec
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -18,10 +18,12 @@ public class WebSocketConvertHandler extends
      MessageToMessageCodec<WebSocketFrame,
      WebSocketConvertHandler.MyWebSocketFrame> {
      @Override
+     //将 MyWebSocketFrame 编码为指定的 WebSocketFrame 子类型
      protected void encode(ChannelHandlerContext ctx,
          WebSocketConvertHandler.MyWebSocketFrame msg,
          List<Object> out) throws Exception {
          ByteBuf payload = msg.getData().duplicate().retain();
+         //实例化一个指定子类型的 WebSocketFrame
          switch (msg.getType()) {
              case BINARY:
                  out.add(new BinaryWebSocketFrame(payload));
@@ -47,6 +49,7 @@ public class WebSocketConvertHandler extends
     }
 
     @Override
+    //将 WebSocketFrame 解码为 MyWebSocketFrame，并设置 FrameType
     protected void decode(ChannelHandlerContext ctx, WebSocketFrame msg,
         List<Object> out) throws Exception {
         ByteBuf payload = msg.content().duplicate().retain();
@@ -80,7 +83,9 @@ public class WebSocketConvertHandler extends
         }
     }
 
+    //声明 WebSocketConvertHandler 所使用的 OUTBOUND_IN 类型
     public static final class MyWebSocketFrame {
+        //定义拥有被包装的有效负载的 WebSocketFrame 的类型
         public enum FrameType {
             BINARY,
             CLOSE,
