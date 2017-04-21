@@ -2,6 +2,9 @@
 
 [预售(即将开始)-人民邮电出版社-异步社区](www.epubit.com.cn)
 
+![image](https://cloud.githubusercontent.com/assets/501740/25295296/94d2ef06-2715-11e7-9a2a-916d77014cfc.png)
+
+
 ## 内容提要
 
 本书是为想要或者正在使用 Java 从事高性能网络编程的人而写的，循序渐进地介绍了 Netty
