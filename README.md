@@ -25,7 +25,7 @@
 为了更好地服务于读者,进行了如下方面的改进.
 
 
-相对于英文版本(master分支):
+相对于英文版本([2.0-SNAPSHOT](https://github.com/ReactivePlatform/netty-in-action-cn/tree/2.0-SNAPSHOT)分支):
 
 1. 更新了行文中的注释
 2. 按照中文版本的排版进行了调整
