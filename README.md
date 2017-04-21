@@ -1,6 +1,6 @@
 # <<Netty 实战>>
 
-[预售(即将开始)-人民邮电出版社-异步社区](www.epubit.com.cn)
+[预售(即将开始4月下旬)-人民邮电出版社-异步社区](http://www.epubit.com.cn)
 
 ![image](https://cloud.githubusercontent.com/assets/501740/25295296/94d2ef06-2715-11e7-9a2a-916d77014cfc.png)
 
@@ -21,7 +21,7 @@
 
 ## 说明
 
-这个仓库包含了[Netty In Action](www.manning.com/maurer/) 这本书的中文版 [Netty实战](www.epubit.com.cn) 的代码清单.
+这个仓库包含了[Netty In Action](http://www.manning.com/maurer/) 这本书的中文版 [Netty实战](http://www.epubit.com.cn) 的代码清单.
 为了更好地服务于读者,进行了如下方面的改进.
 
 
