@@ -29,9 +29,9 @@ public class BlockingIoExample {
             if ("Done".equals(request)) {
                 break;
             }
+            response = processRequest(request);
+            out.println(response);
         }
-        response = processRequest(request);
-        out.println(response);
     }
 
     private String processRequest(String request){
