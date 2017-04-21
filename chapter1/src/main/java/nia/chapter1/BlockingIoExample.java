@@ -33,12 +33,12 @@ public class BlockingIoExample {
             if ("Done".equals(request)) {
                 break;
             }
+            //请求被传递给服务器的处理方法
+            response = processRequest(request);
+            //服务器的响应被发送给了客户端
+            out.println(response);
+            //继续执行处理循环
         }
-        //请求被传递给服务器的处理方法
-        response = processRequest(request);
-        //服务器的响应被发送给了客户端
-        out.println(response);
-        //继续执行处理循环
     }
 
     private String processRequest(String request){

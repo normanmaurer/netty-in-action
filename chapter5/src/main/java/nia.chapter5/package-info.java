@@ -1,7 +1,7 @@
 /**
  * Created by kerr.
  *
- * Listing 5.1 Backing array {@link nia.chapter5.ByteBufExamples#heapBuffer()}
+ * 代码清单 5-1 支撑数组 {@link nia.chapter5.ByteBufExamples#heapBuffer()}
  *
  * Listing 5.2 Direct buffer data access {@link nia.chapter5.ByteBufExamples#directBuffer()}
  *
