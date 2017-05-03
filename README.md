@@ -42,6 +42,9 @@
 
 请直接克隆本项目即可,建议对照原文查看代码.
 
+## 勘误
+[前言: 2001 => 2011](https://github.com/ReactivePlatform/netty-in-action-cn/issues/2)
+
 -----
 
 Prerequisites
