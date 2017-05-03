@@ -1,8 +1,8 @@
 # 《Netty 实战》 Netty In Action 中文版
 
-[预售-人民邮电出版社-异步社区](http://www.epubit.com.cn/book/details/4228)
-
 [预售-京东](https://item.jd.com/12070975.html)
+
+[预售-人民邮电出版社-异步社区](http://www.epubit.com.cn/book/details/4228)
 
 ![image](https://cloud.githubusercontent.com/assets/501740/25295296/94d2ef06-2715-11e7-9a2a-916d77014cfc.png)
 
