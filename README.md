@@ -1,6 +1,8 @@
 # 《Netty 实战》 Netty In Action 中文版
 
-[京东预售链接（优先发货）：《Netty实战》([美]诺曼·毛瑞尔（Norman Maurer），马文·艾伦·沃尔夫泰尔（Marvin Allen Wolfthal）) ](https://union-click.jd.com/jdc?d=oN4CCW&come=appmessage)
+>代码清单已经更新到 Netty 4.1.10.final
+
+[京东链接（现货发售）：《Netty实战》([美]诺曼·毛瑞尔（Norman Maurer），马文·艾伦·沃尔夫泰尔（Marvin Allen Wolfthal）) ](https://union-click.jd.com/jdc?d=oN4CCW&come=appmessage)
 
 ![image](https://cloud.githubusercontent.com/assets/501740/25295296/94d2ef06-2715-11e7-9a2a-916d77014cfc.png)
 
