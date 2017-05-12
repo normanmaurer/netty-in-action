@@ -10,7 +10,7 @@ Prerequisites
 
 	JDK 1.7.0u71 or better
 
-	Maven 3.2.3 or better
+	Maven 3.3.9 or better
 
 
 If you want to build everything at once, from the top directory run
