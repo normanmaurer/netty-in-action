@@ -2,6 +2,8 @@
 
 >代码清单已经更新到 Netty 4.1.11.final
 
+[本书在进行限量签售](https://github.com/ReactivePlatform/netty-in-action-cn/issues/3)
+
 [不负好时光《Netty IN ACTION》中文版《Netty实战》翻译手记](http://www.epubit.com.cn/article/1171)
 
 [不负好时光《Netty IN ACTION》中文版《Netty实战》翻译手记（ATA内网）](https://www.atatech.org/articles/79051?flag_data_from=recommend)
