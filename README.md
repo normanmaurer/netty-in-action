@@ -2,13 +2,15 @@
 
 >代码清单已经更新到 Netty 4.1.11.final
 
-[本书在进行限量签售](https://github.com/ReactivePlatform/netty-in-action-cn/issues/3)
+[如何评价这本书-知乎](https://www.zhihu.com/question/58838575)
+
+[关于本书-豆瓣](https://book.douban.com/subject/27038538/)
+
+[京东链接（现货发售）：《Netty实战》([美]诺曼·毛瑞尔（Norman Maurer），马文·艾伦·沃尔夫泰尔（Marvin Allen Wolfthal）) ](https://union-click.jd.com/jdc?d=oN4CCW&come=appmessage)
 
 [不负好时光《Netty IN ACTION》中文版《Netty实战》翻译手记](http://www.epubit.com.cn/article/1171)
 
 [不负好时光《Netty IN ACTION》中文版《Netty实战》翻译手记（ATA内网）](https://www.atatech.org/articles/79051?flag_data_from=recommend)
-
-[京东链接（现货发售）：《Netty实战》([美]诺曼·毛瑞尔（Norman Maurer），马文·艾伦·沃尔夫泰尔（Marvin Allen Wolfthal）) ](https://union-click.jd.com/jdc?d=oN4CCW&come=appmessage)
 
 ![image](https://cloud.githubusercontent.com/assets/501740/25295296/94d2ef06-2715-11e7-9a2a-916d77014cfc.png)
 
