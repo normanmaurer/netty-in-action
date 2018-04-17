@@ -26,7 +26,7 @@ public class PlainNioServer {
         ss.bind(address);
         //打开Selector来处理 Channel
         Selector selector = Selector.open();
-        //将ServerSocket注册到Selector以接受连接
+        //将ServerSocketChannel注册到Selector以接受连接
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
         final ByteBuffer msg = ByteBuffer.wrap("Hi!\r\n".getBytes());
         for (;;){
