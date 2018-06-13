@@ -1,6 +1,6 @@
 # 《Netty 实战》 Netty In Action 中文版
 
->代码清单已经更新到 Netty 4.1.11.final
+>代码清单已经更新到 Netty 4.1.25.final
 
 [如何评价这本书-知乎](https://www.zhihu.com/question/58838575)
 
