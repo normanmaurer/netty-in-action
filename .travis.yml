@@ -1,0 +1,19 @@
+language: java
+
+sudo: false
+
+jdk:
+  - oraclejdk8
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+script:
+  # need to override as the default is to test
+  - mvn test -B
