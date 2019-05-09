@@ -1,6 +1,7 @@
 package nia.chapter7;
 
 import io.netty.channel.Channel;
+import io.netty.channel.EventLoop;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.util.concurrent.Executors;
@@ -52,6 +53,12 @@ public class ScheduleExamples {
                 System.out.println("60 seconds later");
             }
         }, 60, TimeUnit.SECONDS);
+
+
+        EventLoop loop ;
+
+
+
     }
 
     /**
@@ -84,4 +91,7 @@ public class ScheduleExamples {
         boolean mayInterruptIfRunning = false;
         future.cancel(mayInterruptIfRunning);
     }
+
+
+
 }
