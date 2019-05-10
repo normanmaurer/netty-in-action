@@ -11,10 +11,13 @@ import io.netty.handler.codec.http.websocketx.WebSocket08FrameEncoder;
  *   如果向实现自己的编码器,请看   WebSocket08FrameEncoder
  * @Date 2019/5/9 16:36
  */
-public class ShortToByteEncodingTest extends MessageToByteEncoder<Short> {
+public class ShortToByteEncoderTest extends MessageToByteEncoder<Short> {
 
     @Override
     protected void encode(ChannelHandlerContext ctx, Short msg, ByteBuf out) throws Exception {
         out.writeShort(msg);
     }
+
+    //TODO 编码器: 将应用数据转换为网络格式 encoding
+    //TODO 解码器:将网络格式转换为应用数据 decoding
 }
