@@ -7,7 +7,7 @@ import io.netty.handler.codec.http.websocketx.WebSocket08FrameEncoder;
 
 /**
  * Create By LiuTao <br/>
- *   将编码转换为解码并发送
+ *   10.5 将编码转换为解码并发送
  *   如果向实现自己的编码器,请看   WebSocket08FrameEncoder
  * @Date 2019/5/9 16:36
  */

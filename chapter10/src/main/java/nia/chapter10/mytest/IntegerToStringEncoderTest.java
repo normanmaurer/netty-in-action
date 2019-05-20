@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Create By LiuTao <br/>
- * <p>
+ * <p> 10.6
  *   将数据编码由Integer转换为String类型
  *   encoder: 编码器 将应用数据转换为网络格式
  *   decoder 解码器 将网络数据转换为应用数据

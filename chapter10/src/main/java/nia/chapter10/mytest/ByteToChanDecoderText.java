@@ -8,23 +8,19 @@ import java.util.List;
 
 /**
  * Create By LiuTao <br/>
- *   10.1 扩展 ByteToMessageDecoder类,以将字节解码为特定的格式
- * @Date 2019/5/9 15:07
+ * 10-8
+ *  将字节转换为Character
+ * @Date 2019/5/10 15:46
  */
-public class ToIntegerDecoderTest extends ByteToMessageDecoder {
-
+public class ByteToChanDecoderText  extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 
-        if (in.readableBytes() >= 4) {
-            //从入站ByeBuf中读取一个int,并将其添加到解码消息的List中
-            out.add(in.readerIndex());
+        if(in.readableBytes() >2){
+            //这里将会自动装箱为Char类型,类型向上转型为自动装箱
+            out.add(in.readChar());
         }
-
-
-
     }
-
-
 }
+

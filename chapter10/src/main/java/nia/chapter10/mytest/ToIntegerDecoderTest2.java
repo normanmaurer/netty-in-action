@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Create By LiuTao <br/>
- *  扩展ReplayingDecoder 将字节解码为消息
+ *  10.2  扩展ReplayingDecoder 将字节解码为消息
  *   ReplayingDecoder 稍慢于 ByteToMessageDecoder
  * @Date 2019/5/9 15:16
  */

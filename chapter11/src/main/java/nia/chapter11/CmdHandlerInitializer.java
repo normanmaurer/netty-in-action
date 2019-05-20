@@ -50,6 +50,7 @@ public class CmdHandlerInitializer extends ChannelInitializer<Channel> {
             }
             int index = frame.indexOf(frame.readerIndex(),
                     frame.writerIndex(), SPACE);
+            //使用包含有命令名称和参数的切片
             return new Cmd(frame.slice(frame.readerIndex(), index),
                     frame.slice(index + 1, frame.writerIndex()));
         }

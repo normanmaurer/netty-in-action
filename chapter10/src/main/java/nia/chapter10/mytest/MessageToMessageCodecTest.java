@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * Create By LiuTao <br/>
- * 解码器:decoder 将应用消息转换为网络消息
- * 编码器:encoder 将网络消息转换为应用消息
+ * 编码器:encoder 将应用消息转换为网络消息
+ * 解码器:decoder 将网络消息转换为应用消息
  * @Date 2019/5/9 17:53
  */
 public class MessageToMessageCodecTest  extends MessageToMessageCodec<Integer,String> {

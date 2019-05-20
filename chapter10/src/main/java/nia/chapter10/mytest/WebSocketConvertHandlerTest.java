@@ -71,11 +71,6 @@ public class WebSocketConvertHandlerTest extends MessageToMessageCodec<WebSocket
         }else{
             new IllegalStateException("不受支持的websock消息" + msg);
         }
-
-
-
-
-
     }
 
     public static final class MyWebSocketFrame{
