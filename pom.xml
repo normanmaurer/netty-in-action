@@ -21,6 +21,7 @@
         <module>chapter11</module>
         <module>chapter12</module>
         <module>chapter13</module>
+        <module>chapter2-zzh</module>
     </modules>
     <properties>
         <junit.version>4.11</junit.version>

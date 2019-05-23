@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>nia-samples-parent</artifactId>
+        <groupId>nia</groupId>
+        <version>2.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>chapter2-zzh</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>chapter2-zzh-server</module>
+        <module>chapter2-zzh-client</module>
+    </modules>
+
+
+</project>
