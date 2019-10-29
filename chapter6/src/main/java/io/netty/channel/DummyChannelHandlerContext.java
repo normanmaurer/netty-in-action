@@ -9,14 +9,12 @@ public class DummyChannelHandlerContext extends AbstractChannelHandlerContext {
     public static ChannelHandlerContext DUMMY_INSTANCE = new DummyChannelHandlerContext(
             null,
             null,
-            null,
-            true,
-            true
+            "dummyChannelHandlerContext"
     );
     public DummyChannelHandlerContext(DefaultChannelPipeline pipeline,
                                       EventExecutor executor,
-                                      String name, boolean inbound, boolean outbound) {
-        super(pipeline, executor, name, inbound, outbound);
+                                      String name) {
+        super(pipeline, executor, name, ChannelDuplexHandler.class);
     }
 
     @Override
