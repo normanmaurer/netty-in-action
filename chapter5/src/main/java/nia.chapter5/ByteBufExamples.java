@@ -170,9 +170,9 @@ public class ByteBufExamples {
     }
 
     /**
-     * 代码清单 5-9 使用 ByteBufProcessor 来寻找\r
+     * 代码清单 5-9 使用 ByteProcessor 来寻找\r
      *
-     * use {@link io.netty.buffer.ByteBufProcessor in Netty 4.0.x}
+     * use {@link io.netty.util.ByteProcessor in Netty 4.1.x}
      */
     public static void byteProcessor() {
         ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
@@ -182,7 +182,7 @@ public class ByteBufExamples {
     /**
      * 代码清单 5-9 使用 ByteBufProcessor 来寻找\r
      *
-     * use {@link io.netty.util.ByteProcessor in Netty 4.1.x}
+     * use {@link io.netty.buffer.ByteBufProcessor in Netty 4.0.x}
      */
     public static void byteBufProcessor() {
         ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
