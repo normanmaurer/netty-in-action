@@ -25,8 +25,7 @@ public class PlainOioServer {
                         OutputStream out;
                         try {
                             out = clientSocket.getOutputStream();
-                            out.write("Hi!\r\n".getBytes(
-                                    Charset.forName("UTF-8")));
+                            out.write("Hi!\r\n".getBytes(Charset.forName("UTF-8")));
                             out.flush();
                             clientSocket.close();
                         } catch (IOException e) {
