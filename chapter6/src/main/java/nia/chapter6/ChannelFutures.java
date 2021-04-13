@@ -11,14 +11,14 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 /**
  * Created by kerr.
  *
- * Listing 6.13 Adding a ChannelFutureListener to a ChannelFuture
+ * 代码清单 6-13 添加 ChannelFutureListener 到 ChannelFuture
  */
 public class ChannelFutures {
     private static final Channel CHANNEL_FROM_SOMEWHERE = new NioSocketChannel();
     private static final ByteBuf SOME_MSG_FROM_SOMEWHERE = Unpooled.buffer(1024);
 
     /**
-     * Listing 6.13 Adding a ChannelFutureListener to a ChannelFuture
+     * 代码清单 6-13 添加 ChannelFutureListener 到 ChannelFuture
      * */
     public static void addingChannelFutureListener(){
         Channel channel = CHANNEL_FROM_SOMEWHERE; // get reference to pipeline;

@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioDatagramChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 13.8 LogEventMonitor
+ * 代码清单 13-8 LogEventMonitor
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -19,14 +19,17 @@ public class LogEventMonitor {
     public LogEventMonitor(InetSocketAddress address) {
         group = new NioEventLoopGroup();
         bootstrap = new Bootstrap();
+        //引导该 NioDatagramChannel
         bootstrap.group(group)
             .channel(NioDatagramChannel.class)
+            //设置套接字选项 SO_BROADCAST
             .option(ChannelOption.SO_BROADCAST, true)
             .handler( new ChannelInitializer<Channel>() {
                 @Override
                 protected void initChannel(Channel channel)
                     throws Exception {
                     ChannelPipeline pipeline = channel.pipeline();
+                    //将 LogEventDecoder 和 LogEventHandler 添加到 ChannelPipeline 中
                     pipeline.addLast(new LogEventDecoder());
                     pipeline.addLast(new LogEventHandler());
                 }
@@ -35,6 +38,7 @@ public class LogEventMonitor {
     }
 
     public Channel bind() {
+        //绑定 Channel。注意，DatagramChannel 是无连接的
         return bootstrap.bind().syncUninterruptibly().channel();
     }
 
@@ -47,6 +51,7 @@ public class LogEventMonitor {
             throw new IllegalArgumentException(
             "Usage: LogEventMonitor <port>");
         }
+        //构造一个新的 LogEventMonitor
         LogEventMonitor monitor = new LogEventMonitor(
             new InetSocketAddress(Integer.parseInt(args[0])));
         try {

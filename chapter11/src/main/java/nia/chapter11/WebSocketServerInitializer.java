@@ -12,7 +12,7 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 
 /**
- * Listing 11.6 Supporting WebSocket on the server
+ * 代码清单 11-6 在服务器端支持 WebSocket
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
@@ -21,10 +21,15 @@ public class WebSocketServerInitializer extends ChannelInitializer<Channel> {
     protected void initChannel(Channel ch) throws Exception {
         ch.pipeline().addLast(
             new HttpServerCodec(),
+            //为握手提供聚合的 HttpRequest
             new HttpObjectAggregator(65536),
+            //如果被请求的端点是"/websocket"，则处理该升级握手
             new WebSocketServerProtocolHandler("/websocket"),
+            //TextFrameHandler 处理 TextWebSocketFrame
             new TextFrameHandler(),
+            //BinaryFrameHandler 处理 BinaryWebSocketFrame
             new BinaryFrameHandler(),
+            //ContinuationFrameHandler 处理 ContinuationWebSocketFrame
             new ContinuationFrameHandler());
     }
 

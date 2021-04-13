@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 8.4 Bootstrapping a server
+ * 代码清单 8-4 引导服务器
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  * @author <a href="mailto:mawolfthal@gmail.com">Marvin Wolfthal</a>
@@ -20,13 +20,17 @@ import java.net.InetSocketAddress;
 public class BootstrapServer {
 
     /**
-     * Listing 8.4 Bootstrapping a server
+     * 代码清单 8-4 引导服务器
      * */
     public void bootstrap() {
         NioEventLoopGroup group = new NioEventLoopGroup();
+        //创建 Server Bootstrap
         ServerBootstrap bootstrap = new ServerBootstrap();
+        //设置 EventLoopGroup，其提供了用于处理 Channel 事件的EventLoop
         bootstrap.group(group)
+            //指定要使用的 Channel 实现
             .channel(NioServerSocketChannel.class)
+            //设置用于处理已被接受的子 Channel 的I/O及数据的 ChannelInboundHandler
             .childHandler(new SimpleChannelInboundHandler<ByteBuf>() {
                 @Override
                 protected void channelRead0(ChannelHandlerContext channelHandlerContext,
@@ -34,6 +38,7 @@ public class BootstrapServer {
                     System.out.println("Received data");
                 }
             });
+        //通过配置好的 ServerBootstrap 的实例绑定该 Channel
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(8080));
         future.addListener(new ChannelFutureListener() {
             @Override

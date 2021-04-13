@@ -3,7 +3,7 @@ package nia.chapter6;
 import io.netty.channel.*;
 
 /**
- * Listing 6.14 Adding a ChannelFutureListener to a ChannelPromise
+ * 代码清单 6-14 添加 ChannelFutureListener 到 ChannelPromise
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
