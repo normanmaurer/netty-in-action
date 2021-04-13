@@ -1,32 +1,32 @@
 /**
  * Created by kerr.
  *
- * Listing 11.1 Adding SSL/TLS support {@link nia.chapter11.SslChannelInitializer}
+ * 代码清单 11-1 添加 SSL/TLS 支持 {@link nia.chapter11.SslChannelInitializer}
  *
- * Listing 11.2 Adding support for HTTP {@link nia.chapter11.HttpPipelineInitializer}
+ * 代码清单 11-2 添加 HTTP 支持 {@link nia.chapter11.HttpPipelineInitializer}
  *
- * Listing 11.3 Automatically aggregating HTTP message fragments {@link nia.chapter11.HttpAggregatorInitializer}
+ * 代码清单 11-3 自动聚合 HTTP 的消息片段 {@link nia.chapter11.HttpAggregatorInitializer}
  *
- * Listing 11.4 Automatically compressing HTTP messages {@link nia.chapter11.HttpCompressionInitializer}
+ * 代码清单 11-4 自动压缩 HTTP 消息 {@link nia.chapter11.HttpCompressionInitializer}
  *
- * Listing 11.5 Using HTTPS {@link nia.chapter11.HttpsCodecInitializer}
+ * 代码清单 11-5 使用 HTTPS {@link nia.chapter11.HttpsCodecInitializer}
  *
- * Listing 11.6 Supporting WebSocket on the server {@link nia.chapter11.WebSocketServerInitializer}
+ * 代码清单 11-6 在服务器端支持 WebSocket {@link nia.chapter11.WebSocketServerInitializer}
  *
- * Listing 11.7 Sending heartbeats {@link nia.chapter11.IdleStateHandlerInitializer}
+ * 代码清单 11-7 发送心跳 {@link nia.chapter11.IdleStateHandlerInitializer}
  *
- * Listing 11.8 Handling line-delimited frames {@link nia.chapter11.LineBasedHandlerInitializer}
+ * 代码清单 11-8 处理由行尾符分隔的帧 {@link nia.chapter11.LineBasedHandlerInitializer}
  *
- * Listing 11.9 Using a ChannelInitializer as a decoder installer {@link nia.chapter11.CmdHandlerInitializer}
+ * 代码清单 11-9 使用 ChannelInitializer 安装解码器 {@link nia.chapter11.CmdHandlerInitializer}
  *
- * Listing 11.10 Decoder for the command and the handler {@link nia.chapter11.LengthBasedInitializer}
+ * 代码清单 11-10 使用 LengthFieldBasedFrameDecoder 解码器基于长度的协议 {@link nia.chapter11.LengthBasedInitializer}
  *
- * Listing 11.11 Transferring file contents with FileRegion {@link nia.chapter11.FileRegionWriteHandler}
+ * 代码清单 11-11 使用 FileRegion 传输文件的内容 {@link nia.chapter11.FileRegionWriteHandler}
  *
- * Listing 11.12 Transferring file contents with ChunkedStream {@link nia.chapter11.ChunkedWriteHandlerInitializer}
+ * 代码清单 11-12 使用 ChunkedStream 传输文件内容 {@link nia.chapter11.ChunkedWriteHandlerInitializer}
  *
- * Listing 11.13 Using JBoss Marshalling {@link nia.chapter11.MarshallingInitializer}
+ * 代码清单 11-13 使用 JBoss Marshalling {@link nia.chapter11.MarshallingInitializer}
  *
- * Listing 11.14 Using protobuf {@link nia.chapter11.ProtoBufInitializer}
+ * 代码清单 11-14 使用 protobuf {@link nia.chapter11.ProtoBufInitializer}
  */
 package nia.chapter11;

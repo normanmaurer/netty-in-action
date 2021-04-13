@@ -10,10 +10,11 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
 /**
- * Listing 12.3 Initializing the ChannelPipeline
+ * 代码清单 12-3 初始化 ChannelPipeline
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
+//扩展了 ChannelInitializer
 public class ChatServerInitializer extends ChannelInitializer<Channel> {
     private final ChannelGroup group;
 
@@ -22,6 +23,7 @@ public class ChatServerInitializer extends ChannelInitializer<Channel> {
     }
 
     @Override
+    //将所有需要的 ChannelHandler 添加到 ChannelPipeline 中
     protected void initChannel(Channel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new HttpServerCodec());

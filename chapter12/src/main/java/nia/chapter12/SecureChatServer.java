@@ -10,10 +10,11 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
 import java.net.InetSocketAddress;
 
 /**
- * Listing 12.7 Adding encryption to the ChatServer
+ * 代码清单 12-7 向 ChatServer 添加加密
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
+//SecureChatServer 扩展 ChatServer 以支持加密
 public class SecureChatServer extends ChatServer {
     private final SslContext context;
 
@@ -24,6 +25,7 @@ public class SecureChatServer extends ChatServer {
     @Override
     protected ChannelInitializer<Channel> createInitializer(
         ChannelGroup group) {
+        //返回之前创建的 SecureChatServerInitializer 以启用加密
         return new SecureChatServerInitializer(group, context);
     }
 

@@ -1,20 +1,20 @@
 /**
  * Created by kerr.
  *
- * Listing 8.1 Bootstrapping a client {@link nia.chapter8.BootstrapClient#bootstrap()}
+ * Listing 代码清单 8-1 引导一个客户端 {@link nia.chapter8.BootstrapClient#bootstrap()}
  *
- * Listing 8.3 Incompatible Channel and EventLoopGroup {@link nia.chapter8.InvalidBootstrapClient#bootstrap()}
+ * 代码清单 8-3 不兼容的 Channel 和 EventLoopGroup {@link nia.chapter8.InvalidBootstrapClient#bootstrap()}
  *
- * Listing 8.4 Bootstrapping a server{@link nia.chapter8.BootstrapServer#bootstrap()}
+ * 代码清单 8-4 引导服务器 {@link nia.chapter8.BootstrapServer#bootstrap()}
  *
- * Listing 8.5 Bootstrapping a server {@link nia.chapter8.BootstrapSharingEventLoopGroup#bootstrap()}
+ * 代码清单 8-5 引导服务器 {@link nia.chapter8.BootstrapSharingEventLoopGroup#bootstrap()}
  *
- * Listing 8.6 Bootstrapping and using ChannelInitializer {@link nia.chapter8.BootstrapWithInitializer#bootstrap()}
+ * 代码清单 8-6 引导和使用 ChannelInitializer {@link nia.chapter8.BootstrapWithInitializer#bootstrap()}
  *
- * Listing 8.7 Using attributes {@link nia.chapter8.BootstrapClientWithOptionsAndAttrs#bootstrap()}
+ * 代码清单 8-7 使用属性值 {@link nia.chapter8.BootstrapClientWithOptionsAndAttrs#bootstrap()}
  *
- * Listing 8.8 Using Bootstrap with DatagramChannel {@link nia.chapter8.BootstrapDatagramChannel#bootstrap()}
+ * 代码清单 8-8 使用 Bootstrap 和 DatagramChannel {@link nia.chapter8.BootstrapDatagramChannel#bootstrap()}
  *
- * Listing 8.9 Graceful shutdown {@link nia.chapter8.GracefulShutdown#bootstrap()}
+ * 代码清单 8-9 优雅关闭 {@link nia.chapter8.GracefulShutdown#bootstrap()}
  */
 package nia.chapter8;
