@@ -12,7 +12,7 @@
     <artifactId>chapter11</artifactId>
     <name>Chapter 11. Provided ChannelHandlers and codecs</name>
     <properties>
-        <protobuf-java.version>2.5.0</protobuf-java.version>
+        <protobuf-java.version>3.16.1</protobuf-java.version>
     </properties>
     <dependencies>
         <dependency>
