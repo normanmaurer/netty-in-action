@@ -26,7 +26,7 @@ public class FrameChunkDecoderTest {
         }
         ByteBuf input = buf.duplicate();
 
-        //创建一个 EmbeddedChannel，并向其安装一个帧大小为 3 字节的 FixedLengthFrameDecoder
+        //创建一个 EmbeddedChannel，并向其安装一个帧大小为 3 字节的 FrameChunkDecoder
         EmbeddedChannel channel = new EmbeddedChannel(
             new FrameChunkDecoder(3));
 
@@ -40,7 +40,7 @@ public class FrameChunkDecoderTest {
         } catch (TooLongFrameException e) {
             // expected exception
         }
-        //写入剩余的2字节，并断言将会产生一个有效帧
+        //写入剩余的 3 字节，并断言将会产生一个有效帧
         assertTrue(channel.writeInbound(input.readBytes(3)));
         //将该 Channel 标记为已完成状态
         assertTrue(channel.finish());
