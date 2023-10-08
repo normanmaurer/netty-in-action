@@ -51,7 +51,7 @@ public class CmdHandlerInitializer extends ChannelInitializer<Channel> {
             int index = frame.indexOf(frame.readerIndex(),
                     frame.writerIndex(), SPACE);
             return new Cmd(frame.slice(frame.readerIndex(), index),
-                    frame.slice(index + 1, frame.writerIndex()));
+                    frame.slice(index + 1, frame.writerIndex() - index - 1));
         }
     }
 
